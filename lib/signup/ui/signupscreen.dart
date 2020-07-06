@@ -73,17 +73,15 @@ class CardOptions extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               margin: EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
-              child: Container(
-                height: height - 150,
-                width: width,
-                child: MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    initialRoute: '/signup',
-                    routes: {
-                      '/signup': (context) => SignUpForm(),
-                      '/confirm': (context) => ConfirmSignUp(),
-                    }),
-              ),
+              height: height - 150,
+              width: width,
+              child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  initialRoute: '/signup',
+                  routes: {
+                    '/signup': (_) => SignUpForm(),
+                    '/confirm': (_) => ConfirmSignUp(),
+                  }),
             ),
           ],
         ),
