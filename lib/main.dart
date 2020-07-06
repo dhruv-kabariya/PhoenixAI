@@ -1,4 +1,4 @@
-import 'package:ai/login/ui/loginscreen.dart';
+import 'package:ai/signup/ui/signupscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
+      home: SignUpScreen(),
     );
   }
 }
