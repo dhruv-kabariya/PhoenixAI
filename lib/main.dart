@@ -1,3 +1,5 @@
+import 'package:ai/detail/UI/screen/detailscreen.dart';
+import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/login/ui/loginscreen.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:ai/signup/ui/signupscreen.dart';
@@ -11,14 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: LoginScreen(),
-      initialRoute: "/",
+initialRoute: "/",
       routes: {
         '/': (context) => LoginScreen(),
         '/login': (context) => LoginForm(),
         '/signup': (context) => SignUpForm(),
         '/confirm': (context) => ConfirmSignUp(),
       },
+
     );
   }
 }
