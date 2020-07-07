@@ -16,7 +16,7 @@ class IconRow extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.all(10),
-                  width: 40,
+                  // width: 40,
                   // height: 60,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -44,7 +44,7 @@ class IconRow extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Container(
-              width: 50,
+              // width: 50,
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: Color(0xB3121212), shape: BoxShape.circle),
@@ -57,7 +57,7 @@ class IconRow extends StatelessWidget {
             ),
           ),
           Container(
-            width: 50,
+            // width: 50,
             padding: EdgeInsets.all(12),
             margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
             decoration: BoxDecoration(

@@ -75,9 +75,9 @@ class CardOptions extends StatelessWidget {
               margin: EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  initialRoute: '/login',
+                  initialRoute: '/loginform',
                   routes: {
-                    '/login': (context) => LoginForm(),
+                    '/loginform': (context) => LoginForm(),
                     '/signup': (context) => SignUpForm(),
                     '/confirm': (_) => ConfirmSignUp(),
                   }),

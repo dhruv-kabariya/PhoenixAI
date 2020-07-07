@@ -15,8 +15,6 @@ class WebAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WebAppBarState extends State<WebAppBar> {
-  TextEditingController _controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     double boxwidth = MediaQuery.of(context).size.width / 100;
