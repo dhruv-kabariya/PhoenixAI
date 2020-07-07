@@ -11,13 +11,12 @@ class IconRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 60,
+            height: 40,
             child: Row(
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
-                  width: 40,
-                  // height: 60,
+                  margin: EdgeInsets.all(5),
+                  width: 30,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("profile.jpg"), fit: BoxFit.cover),
@@ -29,7 +28,7 @@ class IconRow extends StatelessWidget {
                     "Rashmika",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold),
                   ),
                 )
@@ -44,21 +43,21 @@ class IconRow extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Container(
-              width: 50,
-              margin: EdgeInsets.all(10),
+              width: 30,
+              margin: EdgeInsets.all(5),
               decoration: BoxDecoration(
                   color: Color(0xB3121212), shape: BoxShape.circle),
               padding: EdgeInsets.all(5),
               child: Icon(
                 Icons.arrow_drop_down,
                 color: Colors.white70,
-                size: 40,
+                size: 20,
               ),
             ),
           ),
           Container(
-            width: 50,
-            padding: EdgeInsets.all(12),
+            width: 30,
+            padding: EdgeInsets.all(5),
             margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -67,7 +66,7 @@ class IconRow extends StatelessWidget {
             child: Icon(
               Icons.notifications,
               color: Colors.white70,
-              size: 25,
+              size: 20,
             ),
           ),
         ],

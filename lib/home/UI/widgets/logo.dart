@@ -12,7 +12,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: boxwidth * 2, right: boxwidth * 2),
-      height: 60,
+      height: 40,
       child: Image.asset("logo4.png"),
     );
   }

@@ -189,7 +189,9 @@ class _LoginFormState extends State<LoginForm> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       color: Colors.indigo,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/home");
+                      },
                       child: Container(
                         alignment: Alignment.center,
                         child: Text(
