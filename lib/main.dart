@@ -13,14 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-initialRoute: "/",
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
       routes: {
-        '/': (context) => LoginScreen(),
+        // '/': (context) => LoginScreen(),
+        '/': (context) => HomeScreen(),
         '/login': (context) => LoginForm(),
         '/signup': (context) => SignUpForm(),
         '/confirm': (context) => ConfirmSignUp(),
       },
-
     );
   }
 }
