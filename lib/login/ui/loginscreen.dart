@@ -249,27 +249,34 @@ class _LoginFormState extends State<LoginForm> {
                         shape: CircleBorder(),
                         margin: EdgeInsets.only(left: 10, right: 10),
                         elevation: 5,
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: InkWell(
-                            onTap: () {},
-                            child: Image.asset(
-                              "github-dark.png",
-                              fit: BoxFit.cover,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(6.0),
+                              child: Image.asset(
+                                "github-logo.png",
+                                // fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      Card(
-                        shape: CircleBorder(),
-                        margin: EdgeInsets.only(left: 10),
-                        elevation: 5,
-                        child: Container(
-                          padding: EdgeInsets.all(12),
+                      InkWell(
+                        child: Card(
+                          shape: CircleBorder(),
+                          margin: EdgeInsets.only(left: 10),
+                          elevation: 5,
                           child: InkWell(
                             onTap: () {},
-                            child: Image.asset(
-                              "linkedin.png",
+                            child: Container(
+                              child: Padding(
+                                padding: const EdgeInsets.all(9.0),
+                                child: Image.asset(
+                                  "linkedin.png",
+                                  color: Color(0xff0A66C2),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -283,7 +290,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have account "),
+                      Text("Don't have account? "),
                       InkWell(
                         onTap: () {
                           Navigator.pushNamed(context, '/signup');
