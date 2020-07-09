@@ -1,6 +1,8 @@
+import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:ai/signup/ui/signupscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -81,6 +83,7 @@ class CardOptions extends StatelessWidget {
                     '/signup': (context) => SignUpForm(),
                     '/confirm': (_) => ConfirmSignUp(),
                   }),
+              // child: LoginForm(),
             ),
           ],
         ),
@@ -130,6 +133,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final singupbloc = BlocProvider.of<SignupblocBloc>(context);
     return Scaffold(
       body: Container(
         child: Form(
@@ -287,6 +291,7 @@ class _LoginFormState extends State<LoginForm> {
                       InkWell(
                         onTap: () {
                           Navigator.pushNamed(context, '/signup');
+                          singupbloc.add(SingupblocInitialEvent());
                         },
                         child: Text(
                           "Sign Up",

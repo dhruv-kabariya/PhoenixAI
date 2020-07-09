@@ -4,13 +4,13 @@ class SearchBox extends StatelessWidget {
   const SearchBox({
     Key key,
     @required this.boxwidth,
+    @required this.controller,
   }) : super(key: key);
 
   final double boxwidth;
-
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controller = TextEditingController();
     return Container(
       margin: EdgeInsets.only(
         right: boxwidth * 2,
@@ -22,13 +22,13 @@ class SearchBox extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15)),
           color: Color(0x80121212)),
       child: TextField(
-        controller: _controller,
+        controller: controller,
         style: TextStyle(
           color: Colors.white70,
           fontSize: 18,
         ),
         onChanged: (value) {
-          print(_controller.text);
+          // print(controller.text);
         },
         decoration: InputDecoration(
             hintStyle: TextStyle(color: Colors.white70),
