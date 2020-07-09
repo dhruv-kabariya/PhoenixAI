@@ -1,3 +1,4 @@
+import 'package:ai/constants/appConstant.dart';
 import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:ai/signup/ui/signupscreen.dart';
@@ -79,9 +80,9 @@ class CardOptions extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   initialRoute: '/loginform',
                   routes: {
-                    '/loginform': (context) => LoginForm(),
-                    '/signup': (context) => SignUpForm(),
-                    '/confirm': (_) => ConfirmSignUp(),
+                    RoutePaths.LoginForm: (context) => LoginForm(),
+                    RoutePaths.Register: (context) => SignUpForm(),
+                    RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
                   }),
               // child: LoginForm(),
             ),
@@ -290,7 +291,7 @@ class _LoginFormState extends State<LoginForm> {
                       Text("Don't have account "),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/signup');
+                          Navigator.pushNamed(context, RoutePaths.Register);
                           singupbloc.add(SingupblocInitialEvent());
                         },
                         child: Text(

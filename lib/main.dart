@@ -1,7 +1,9 @@
 import 'package:ai/blocObserver.dart';
+import 'package:ai/constants/appConstant.dart';
 import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/locator.dart';
 import 'package:ai/login/ui/loginscreen.dart';
+import 'package:ai/router.dart';
 
 import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
@@ -28,12 +30,13 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         initialRoute: "/",
+        onGenerateRoute: Router.generateRoute,
         routes: {
-          // '/': (context) => HomeScreen(),
-          '/': (context) => LoginScreen(),
-          '/loginform': (context) => LoginForm(),
-          '/signup': (context) => SignUpForm(),
-          '/confirm': (context) => ConfirmSignUp(),
+          '/': (context) => HomeScreen(),
+          // '/': (context) => LoginScreen(),
+          RoutePaths.Login: (context) => LoginForm(),
+          RoutePaths.Register: (context) => SignUpForm(),
+          RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
         },
       ),
     );
