@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => SignupblocBloc(),
+          create: (context) => SignupblocBloc()..add(SingupblocInitialEvent()),
         ),
       ],
       child: MaterialApp(
         initialRoute: "/",
         onGenerateRoute: Router.generateRoute,
         routes: {
-          '/': (context) => HomeScreen(),
-          // '/': (context) => LoginScreen(),
+          // '/': (context) => HomeScreen(),
+          '/': (context) => LoginScreen(),
           RoutePaths.Login: (context) => LoginForm(),
           RoutePaths.Register: (context) => SignUpForm(),
           RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
