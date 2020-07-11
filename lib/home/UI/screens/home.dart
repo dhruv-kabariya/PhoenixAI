@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: WebAppBar(
-        size: Size(MediaQuery.of(context).size.width, 80),
+        size: Size(MediaQuery.of(context).size.width, 60),
       ),
       body: HomeBody(),
     );

@@ -1,7 +1,6 @@
 import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/login/bloc/authentication_bloc.dart';
 import 'package:ai/login/login_bloc/bloc/login_bloc.dart';
-import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 
 import 'package:ai/signup/ui/signupscreen.dart';
 import 'package:flutter/material.dart';
@@ -273,6 +272,75 @@ class _LoginFormState extends State<LoginForm> {
                 ],
               ),
             ),
+            // Container(
+            //   height: 40,
+            //   margin: EdgeInsets.only(top: 8, bottom: 8),
+            //   child: FlatButton(
+            //     shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(50)),
+            //     color: Colors.indigo,
+            //     onPressed: () {
+            //       Navigator.of(context).pushNamed("/home");
+            //     },
+            //     child: Container(
+            //       alignment: Alignment.center,
+            //       child: Text(
+            //         "Login",
+            //         style: TextStyle(
+            //             color: Colors.white,
+            //             fontSize: 18,
+            //             fontWeight: FontWeight.bold),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // Container(
+            //   margin: EdgeInsets.only(top: 8),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       Expanded(
+            //         child: Divider(
+            //           thickness: 2,
+            //           color: Colors.black38,
+            //           endIndent: 6,
+            //           indent: 10,
+            //         ),
+            //       ),
+            //       Text(
+            //         "OR",
+            //       ),
+            //       Expanded(
+            //         child: Divider(
+            //           thickness: 2,
+            //           color: Colors.black38,
+            //           endIndent: 10,
+            //           indent: 6,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // Row(
+            //   children: [
+            //     Card(
+            //       shape: CircleBorder(),
+            //       margin: EdgeInsets.only(left: 10, right: 10),
+            //       elevation: 5,
+            //       child: Container(
+            //         padding: EdgeInsets.all(8),
+            //         child: InkWell(
+            //           onTap: () {},
+            //           child: Image.asset(
+            //             "github-dark.png",
+            //             fit: BoxFit.cover,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             Container(
               height: 50,
               margin: EdgeInsets.only(top: 12, bottom: 8),
@@ -293,27 +361,34 @@ class _LoginFormState extends State<LoginForm> {
                     shape: CircleBorder(),
                     margin: EdgeInsets.only(left: 10, right: 10),
                     elevation: 5,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      child: InkWell(
-                        onTap: () {},
-                        child: Image.asset(
-                          "github-dark.png",
-                          fit: BoxFit.cover,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.all(6.0),
+                          child: Image.asset(
+                            "github-logo.png",
+                            // fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Card(
-                    shape: CircleBorder(),
-                    margin: EdgeInsets.only(left: 10),
-                    elevation: 5,
-                    child: Container(
-                      padding: EdgeInsets.all(12),
+                  InkWell(
+                    child: Card(
+                      shape: CircleBorder(),
+                      margin: EdgeInsets.only(left: 10),
+                      elevation: 5,
                       child: InkWell(
                         onTap: () {},
-                        child: Image.asset(
-                          "linkedin.png",
+                        child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(9.0),
+                            child: Image.asset(
+                              "linkedin.png",
+                              color: Color(0xff0A66C2),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -327,12 +402,10 @@ class _LoginFormState extends State<LoginForm> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have account "),
+                  Text("Don't have account? "),
                   InkWell(
                     onTap: () {
                       // Navigator.pushNamed(context, RoutePaths.Register);
-                      BlocProvider.of<SignupblocBloc>(context)
-                          .add(SingupblocInitialEvent());
                       BlocProvider.of<LoginBloc>(context)
                           .add(LoginToSignUpEvent());
                     },
@@ -340,10 +413,33 @@ class _LoginFormState extends State<LoginForm> {
                       "Sign Up",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
+            // Container(
+            //   alignment: Alignment.bottomCenter,
+            //   margin: EdgeInsets.only(left: 50, top: 60, right: 50),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Text("Don't have account "),
+            //       InkWell(
+            //         onTap: () {
+            //           // Navigator.pushNamed(context, RoutePaths.Register);
+            //           BlocProvider.of<SignupblocBloc>(context)
+            //               .add(SingupblocInitialEvent());
+            //           BlocProvider.of<LoginBloc>(context)
+            //               .add(LoginToSignUpEvent());
+            //         },
+            //         child: Text(
+            //           "Sign Up",
+            //           style: TextStyle(fontWeight: FontWeight.bold),
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

@@ -138,195 +138,201 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     // singupbloc.add(SingupblocInitialEvent());
     return BlocBuilder<SignupblocBloc, SignupblocState>(
-        builder: (context, state) {
-      if (state is SingupblocSecondPage) {
-        return ConfirmSignUp();
-      }
-      return Container(
-        child: Form(
-          key: _formKey,
-          child: Container(
-            child: Column(
-              children: [
-                Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[350],
-                    borderRadius: BorderRadius.circular(10),
+      builder: (context, state) {
+        if (state is SingupblocSecondPage) {
+          return ConfirmSignUp();
+        }
+
+        return Container(
+          child: Form(
+            key: _formKey,
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin:
+                        EdgeInsets.only(top: 2, left: 3, right: 3, bottom: 2),
+                    padding:
+                        EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 2),
+                    child: TextFormField(
+                      controller: _userId,
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.mail_outline),
+                          fillColor: Colors.grey,
+                          border: InputBorder.none,
+                          hintText: "Enter UserID or Phone"),
+                    ),
                   ),
-                  margin: EdgeInsets.only(top: 2, left: 3, right: 3, bottom: 2),
-                  padding:
-                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 2),
-                  child: TextFormField(
-                    controller: _userId,
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.mail_outline),
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin:
+                        EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
+                    padding:
+                        EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
+                    child: TextFormField(
+                      controller: _password,
+                      obscureText: _showPas,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.vpn_key),
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.remove_red_eye),
+                            onPressed: () {
+                              setState(() {
+                                _showPas = (!_showPas);
+                              });
+                            }),
                         fillColor: Colors.grey,
                         border: InputBorder.none,
-                        hintText: "Enter UserID or Phone"),
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[350],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
-                  padding:
-                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
-                  child: TextFormField(
-                    controller: _password,
-                    obscureText: _showPas,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.vpn_key),
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.remove_red_eye),
-                          onPressed: () {
-                            setState(() {
-                              _showPas = (!_showPas);
-                            });
-                          }),
-                      fillColor: Colors.grey,
-                      border: InputBorder.none,
-                      hintText: "Password",
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[350],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
-                  padding:
-                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
-                  child: TextFormField(
-                    controller: _confirmPassword,
-                    obscureText: _showPas,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.vpn_key),
-                      suffixIcon: IconButton(
-                          icon: Icon(Icons.remove_red_eye),
-                          onPressed: () {
-                            setState(() {
-                              _showPas = (!_showPas);
-                            });
-                          }),
-                      fillColor: Colors.grey,
-                      border: InputBorder.none,
-                      hintText: "Confirm Password",
-                    ),
-                    validator: (value) {
-                      if (value != _password.text) {
-                        return "Enter same password";
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                Container(
-                  height: 40,
-                  margin: EdgeInsets.only(top: 8, bottom: 8),
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    color: Colors.indigo,
-                    onPressed: () {
-                      // Navigator.pushNamed(context, '/confirm');
-                      // widget.bloc.add(SingupblocNextEvent());
-                      BlocProvider.of<SignupblocBloc>(context)
-                          .add(SingupblocNextEvent());
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Next",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                        hintText: "Password",
                       ),
                     ),
                   ),
-                ),
-                //  Container(
-                //   height: 50,
-                //   margin: EdgeInsets.only(top: 12, bottom: 8),
-                //   child: Row(
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       Card(
-                //         shape: CircleBorder(),
-                //         margin: EdgeInsets.only(right: 10),
-                //         elevation: 5,
-                //         child: InkWell(
-                //           onTap: () {},
-                //           child: Image.asset("google.png"),
-                //         ),
-                //       ),
-                //       Card(
-                //         shape: CircleBorder(),
-                //         margin: EdgeInsets.only(left: 10, right: 10),
-                //         elevation: 5,
-                //         child: Container(
-                //           padding: EdgeInsets.all(8),
-                //           child: InkWell(
-                //             onTap: () {},
-                //             child: Image.asset(
-                //               "github-dark.png",
-                //               fit: BoxFit.cover,
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //       Card(
-                //         shape: CircleBorder(),
-                //         margin: EdgeInsets.only(left: 10),
-                //         elevation: 5,
-                //         child: Container(
-                //           padding: EdgeInsets.all(12),
-                //           child: InkWell(
-                //             onTap: () {},
-                //             child: Image.asset(
-                //               "linkedin.png",
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  margin: EdgeInsets.only(left: 50, top: 100, right: 50),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Already have account "),
-                      InkWell(
-                        onTap: () {
-                          // Navigator.pushNamed(context, RoutePaths.Register);
-                          // BlocProvider.of<SignupblocBloc>(context)
-                          //     .add(SingupblocInitialEvent());
-                          BlocProvider.of<LoginBloc>(context).add(LoginPage());
-                        },
-                        child: Text(
-                          "Log In",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin:
+                        EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
+                    padding:
+                        EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
+                    child: TextFormField(
+                      controller: _confirmPassword,
+                      obscureText: _showPas,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.vpn_key),
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.remove_red_eye),
+                            onPressed: () {
+                              setState(() {
+                                _showPas = (!_showPas);
+                              });
+                            }),
+                        fillColor: Colors.grey,
+                        border: InputBorder.none,
+                        hintText: "Confirm Password",
+                      ),
+                      validator: (value) {
+                        if (value != _password.text) {
+                          return "Enter same password";
+                        }
+                        return null;
+                      },
+                    ),
                   ),
-                )
-              ],
+                  Container(
+                    height: 40,
+                    margin: EdgeInsets.only(top: 8, bottom: 8),
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      color: Colors.indigo,
+                      onPressed: () {
+                        // Navigator.pushNamed(context, '/confirm');
+                        // widget.bloc.add(SingupblocNextEvent());
+                        BlocProvider.of<SignupblocBloc>(context)
+                            .add(SingupblocNextEvent());
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                  //  Container(
+                  //   height: 50,
+                  //   margin: EdgeInsets.only(top: 12, bottom: 8),
+                  //   child: Row(
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Card(
+                  //         shape: CircleBorder(),
+                  //         margin: EdgeInsets.only(right: 10),
+                  //         elevation: 5,
+                  //         child: InkWell(
+                  //           onTap: () {},
+                  //           child: Image.asset("google.png"),
+                  //         ),
+                  //       ),
+                  //       Card(
+                  //         shape: CircleBorder(),
+                  //         margin: EdgeInsets.only(left: 10, right: 10),
+                  //         elevation: 5,
+                  //         child: Container(
+                  //           padding: EdgeInsets.all(8),
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //             child: Image.asset(
+                  //               "github-dark.png",
+                  //               fit: BoxFit.cover,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Card(
+                  //         shape: CircleBorder(),
+                  //         margin: EdgeInsets.only(left: 10),
+                  //         elevation: 5,
+                  //         child: Container(
+                  //           padding: EdgeInsets.all(12),
+                  //           child: InkWell(
+                  //             onTap: () {},
+                  //             child: Image.asset(
+                  //               "linkedin.png",
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    margin: EdgeInsets.only(left: 50, top: 100, right: 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Already have account "),
+                        InkWell(
+                          onTap: () {
+                            // Navigator.pushNamed(context, RoutePaths.Register);
+                            // BlocProvider.of<SignupblocBloc>(context)
+                            //     .add(SingupblocInitialEvent());
+                            BlocProvider.of<LoginBloc>(context)
+                                .add(LoginPage());
+                          },
+                          child: Text(
+                            "Log In",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
