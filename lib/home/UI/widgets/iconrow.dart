@@ -74,13 +74,13 @@ class _IconRowState extends State<IconRow> {
       child: Row(
         children: [
           Container(
-            height: 60,
+            height: 40,
             child: Row(
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
-                  // width: 40,
-                  // height: 60,
+
+                  margin: EdgeInsets.all(5),
+                  width: 30,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("profile.jpg"), fit: BoxFit.cover),
@@ -92,7 +92,7 @@ class _IconRowState extends State<IconRow> {
                     "Rashmika",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold),
                   ),
                 )
@@ -110,22 +110,21 @@ class _IconRowState extends State<IconRow> {
               Overlay.of(context).insert(this._overlayEntry);
             },
             child: Container(
-              // width: 50,
               margin: EdgeInsets.all(10),
+
               decoration: BoxDecoration(
                   color: Color(0xB3121212), shape: BoxShape.circle),
               padding: EdgeInsets.all(5),
               child: Icon(
                 Icons.arrow_drop_down,
                 color: Colors.white70,
-                size: 40,
+                size: 20,
               ),
             ),
           ),
           Container(
-            // width: 50,
             padding: EdgeInsets.all(12),
-            margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
+     margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Color(0xB3121212),
@@ -133,7 +132,7 @@ class _IconRowState extends State<IconRow> {
             child: Icon(
               Icons.notifications,
               color: Colors.white70,
-              size: 25,
+              size: 20,
             ),
           ),
         ],

@@ -15,8 +15,7 @@ class SearchBox extends StatelessWidget {
       margin: EdgeInsets.only(
         right: boxwidth * 2,
       ),
-      padding: EdgeInsets.all(10),
-      height: 60,
+      height: 40,
       width: boxwidth * 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
