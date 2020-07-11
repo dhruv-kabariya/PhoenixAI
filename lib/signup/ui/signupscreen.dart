@@ -1,3 +1,4 @@
+import 'package:ai/login/login_bloc/bloc/login_bloc.dart';
 import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +136,6 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    final singupbloc = BlocProvider.of<SignupblocBloc>(context);
     // singupbloc.add(SingupblocInitialEvent());
     return BlocBuilder<SignupblocBloc, SignupblocState>(
         builder: (context, state) {
@@ -237,7 +237,8 @@ class _SignUpFormState extends State<SignUpForm> {
                     onPressed: () {
                       // Navigator.pushNamed(context, '/confirm');
                       // widget.bloc.add(SingupblocNextEvent());
-                      singupbloc.add(SingupblocNextEvent());
+                      BlocProvider.of<SignupblocBloc>(context)
+                          .add(SingupblocNextEvent());
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -251,6 +252,76 @@ class _SignUpFormState extends State<SignUpForm> {
                     ),
                   ),
                 ),
+                //  Container(
+                //   height: 50,
+                //   margin: EdgeInsets.only(top: 12, bottom: 8),
+                //   child: Row(
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       Card(
+                //         shape: CircleBorder(),
+                //         margin: EdgeInsets.only(right: 10),
+                //         elevation: 5,
+                //         child: InkWell(
+                //           onTap: () {},
+                //           child: Image.asset("google.png"),
+                //         ),
+                //       ),
+                //       Card(
+                //         shape: CircleBorder(),
+                //         margin: EdgeInsets.only(left: 10, right: 10),
+                //         elevation: 5,
+                //         child: Container(
+                //           padding: EdgeInsets.all(8),
+                //           child: InkWell(
+                //             onTap: () {},
+                //             child: Image.asset(
+                //               "github-dark.png",
+                //               fit: BoxFit.cover,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       Card(
+                //         shape: CircleBorder(),
+                //         margin: EdgeInsets.only(left: 10),
+                //         elevation: 5,
+                //         child: Container(
+                //           padding: EdgeInsets.all(12),
+                //           child: InkWell(
+                //             onTap: () {},
+                //             child: Image.asset(
+                //               "linkedin.png",
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: EdgeInsets.only(left: 50, top: 100, right: 50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Already have account "),
+                      InkWell(
+                        onTap: () {
+                          // Navigator.pushNamed(context, RoutePaths.Register);
+                          // BlocProvider.of<SignupblocBloc>(context)
+                          //     .add(SingupblocInitialEvent());
+                          BlocProvider.of<LoginBloc>(context).add(LoginPage());
+                        },
+                        child: Text(
+                          "Log In",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),

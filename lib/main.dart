@@ -1,7 +1,11 @@
 import 'package:ai/blocObserver.dart';
 import 'package:ai/constants/appConstant.dart';
-import 'package:ai/home/UI/screens/home.dart';
+import 'package:ai/detail/bloc/detailpage_bloc.dart';
+
+import 'package:ai/home/bloc/homepage_bloc.dart';
 import 'package:ai/locator.dart';
+import 'package:ai/login/bloc/authentication_bloc.dart';
+import 'package:ai/login/login_bloc/bloc/login_bloc.dart';
 import 'package:ai/login/ui/loginscreen.dart';
 import 'package:ai/router.dart';
 
@@ -26,6 +30,18 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => SignupblocBloc()..add(SingupblocInitialEvent()),
+        ),
+        BlocProvider(
+          create: (context) => AuthenticationBloc()..add(AppLoaded()),
+        ),
+        BlocProvider(
+          create: (context) => HomepageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => DetailpageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
         ),
       ],
       child: MaterialApp(

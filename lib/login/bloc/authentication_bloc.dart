@@ -33,15 +33,17 @@ class AuthenticationBloc
     yield AuthenticationLoading(); // to display splash screen
     try {
       //TODO: data is coming from hive.
-      final currentUser =
-          User(email: "", github: "", name: "", linkedin: "", password: "");
+      var currentUser;
 
       if (currentUser != null) {
+        //user is authenticated
         yield AuthenticationAuthenticated(user: currentUser);
       } else {
+        //user is not authenticated
         yield AuthenticationNotAuthenticated();
       }
     } catch (e) {
+      //some error occur
       yield AuthenticationFailure(
           message: e.message ?? 'An unknown error occurred');
     }
@@ -49,6 +51,7 @@ class AuthenticationBloc
 
   Stream<AuthenticationState> _mapUserLoggedInToState(
       UserLoggedIn event) async* {
+    //user already authenticated
     yield AuthenticationAuthenticated(user: event.user);
   }
 

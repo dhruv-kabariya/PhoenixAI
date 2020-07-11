@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutePaths.Splash:
-        //TODO : what is name of splash screen?
-        // return MaterialPageRoute(builder: (_) => MySpalshScreen());
-        break;
+      // case RoutePaths.Splash:
+      //   //TODO : what is name of splash screen?
+      //   // return MaterialPageRoute(builder: (_) => MySpalshScreen());
+      //   break;
       case RoutePaths.Home:
         return MaterialPageRoute(builder: (_) => HomeScreen());
         break;
-      case RoutePaths.Profile:
-        //  retu  rn MaterialPageRoute(builder: (_) => profile());
-        break;
+      // case RoutePaths.Profile:
+      //   //  return MaterialPageRoute(builder: (_) => profile());
+      //   break;
       case RoutePaths.Register:
         return MaterialPageRoute(builder: (_) => SignUpForm());
         break;
@@ -28,7 +28,7 @@ class Router {
         return MaterialPageRoute(builder: (_) => ConfirmSignUp());
         break;
       case RoutePaths.LoginForm:
-        return MaterialPageRoute(builder: (_) => LoginForm());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
         break;
       default:
         return MaterialPageRoute(
