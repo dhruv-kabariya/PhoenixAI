@@ -1,6 +1,7 @@
+import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -75,13 +76,21 @@ class CardOptions extends StatelessWidget {
               margin: EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
               height: height - 150,
               width: width,
-              child: MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  initialRoute: '/signup',
-                  routes: {
-                    '/signup': (_) => SignUpForm(),
-                    '/confirm': (_) => ConfirmSignUp(),
-                  }),
+              // child: MaterialApp(
+              //     debugShowCheckedModeBanner: false,
+              //     initialRoute: '/signup',
+              //     routes: {
+              //       '/signup': (_) => SignUpForm(),
+              //       '/confirm': (_) => ConfirmSignUp(),
+              //     }),
+              child: BlocBuilder<SignupblocBloc, SignupblocState>(
+                builder: (context, state) {
+                  if (state is SingupblocSecondPage) {
+                    return ConfirmSignUp();
+                  }
+                  return SignUpForm();
+                },
+              ),
             ),
           ],
         ),
@@ -119,120 +128,134 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _showPas = true;
+
   TextEditingController _userId = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Form(
-        key: _formKey,
-        child: Container(
-          child: Column(
-            children: [
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey[350],
-                  borderRadius: BorderRadius.circular(10),
+    final singupbloc = BlocProvider.of<SignupblocBloc>(context);
+    // singupbloc.add(SingupblocInitialEvent());
+    return BlocBuilder<SignupblocBloc, SignupblocState>(
+        builder: (context, state) {
+      if (state is SingupblocSecondPage) {
+        return ConfirmSignUp();
+      }
+      return Container(
+        child: Form(
+          key: _formKey,
+          child: Container(
+            child: Column(
+              children: [
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.only(top: 2, left: 3, right: 3, bottom: 2),
+                  padding:
+                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 2),
+                  child: TextFormField(
+                    controller: _userId,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.mail_outline),
+                        fillColor: Colors.grey,
+                        border: InputBorder.none,
+                        hintText: "Enter UserID or Phone"),
+                  ),
                 ),
-                margin: EdgeInsets.only(top: 2, left: 3, right: 3, bottom: 2),
-                padding: EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 2),
-                child: TextFormField(
-                  controller: _userId,
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.mail_outline),
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
+                  padding:
+                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
+                  child: TextFormField(
+                    controller: _password,
+                    obscureText: _showPas,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.vpn_key),
+                      suffixIcon: IconButton(
+                          icon: Icon(Icons.remove_red_eye),
+                          onPressed: () {
+                            setState(() {
+                              _showPas = (!_showPas);
+                            });
+                          }),
                       fillColor: Colors.grey,
                       border: InputBorder.none,
-                      hintText: "Enter UserID or Phone"),
-                ),
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey[350],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
-                padding: EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
-                child: TextFormField(
-                  controller: _password,
-                  obscureText: _showPas,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.vpn_key),
-                    suffixIcon: IconButton(
-                        icon: Icon(Icons.remove_red_eye),
-                        onPressed: () {
-                          setState(() {
-                            _showPas = (!_showPas);
-                          });
-                        }),
-                    fillColor: Colors.grey,
-                    border: InputBorder.none,
-                    hintText: "Password",
-                  ),
-                ),
-              ),
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey[350],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
-                padding: EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
-                child: TextFormField(
-                  controller: _confirmPassword,
-                  obscureText: _showPas,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.vpn_key),
-                    suffixIcon: IconButton(
-                        icon: Icon(Icons.remove_red_eye),
-                        onPressed: () {
-                          setState(() {
-                            _showPas = (!_showPas);
-                          });
-                        }),
-                    fillColor: Colors.grey,
-                    border: InputBorder.none,
-                    hintText: "Confirm Password",
-                  ),
-                  validator: (value) {
-                    if (value != _password.text) {
-                      return "Enter same password";
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              Container(
-                height: 40,
-                margin: EdgeInsets.only(top: 8, bottom: 8),
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  color: Colors.indigo,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/confirm');
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                      hintText: "Password",
                     ),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.only(top: 8, left: 3, right: 3, bottom: 5),
+                  padding:
+                      EdgeInsets.only(top: 2, left: 10, right: 3, bottom: 5),
+                  child: TextFormField(
+                    controller: _confirmPassword,
+                    obscureText: _showPas,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.vpn_key),
+                      suffixIcon: IconButton(
+                          icon: Icon(Icons.remove_red_eye),
+                          onPressed: () {
+                            setState(() {
+                              _showPas = (!_showPas);
+                            });
+                          }),
+                      fillColor: Colors.grey,
+                      border: InputBorder.none,
+                      hintText: "Confirm Password",
+                    ),
+                    validator: (value) {
+                      if (value != _password.text) {
+                        return "Enter same password";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Container(
+                  height: 40,
+                  margin: EdgeInsets.only(top: 8, bottom: 8),
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    color: Colors.indigo,
+                    onPressed: () {
+                      // Navigator.pushNamed(context, '/confirm');
+                      // widget.bloc.add(SingupblocNextEvent());
+                      singupbloc.add(SingupblocNextEvent());
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

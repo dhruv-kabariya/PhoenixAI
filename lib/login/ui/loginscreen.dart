@@ -1,6 +1,9 @@
+import 'package:ai/constants/appConstant.dart';
+import 'package:ai/signup/bloc/signupbloc_bloc.dart';
 import 'package:ai/signup/ui/confirmSignUp.dart';
 import 'package:ai/signup/ui/signupscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -75,12 +78,13 @@ class CardOptions extends StatelessWidget {
               margin: EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  initialRoute: '/',
+                  initialRoute: '/loginform',
                   routes: {
-                    '/': (context) => LoginForm(),
-                    '/signup': (context) => SignUpForm(),
-                    '/confirm': (_) => ConfirmSignUp(),
+                    RoutePaths.LoginForm: (context) => LoginForm(),
+                    RoutePaths.Register: (context) => SignUpForm(),
+                    RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
                   }),
+              // child: LoginForm(),
             ),
           ],
         ),
@@ -130,6 +134,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final singupbloc = BlocProvider.of<SignupblocBloc>(context);
     return Scaffold(
       body: Container(
         child: Form(
@@ -295,7 +300,8 @@ class _LoginFormState extends State<LoginForm> {
                       Text("Don't have account? "),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/signup');
+                          Navigator.pushNamed(context, RoutePaths.Register);
+                          singupbloc.add(SingupblocInitialEvent());
                         },
                         child: Text(
                           "Sign Up",

@@ -15,8 +15,7 @@ class WebAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WebAppBarState extends State<WebAppBar> {
-  TextEditingController _controller = TextEditingController();
-
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double boxwidth = MediaQuery.of(context).size.width / 100;
@@ -35,7 +34,10 @@ class _WebAppBarState extends State<WebAppBar> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Logo(boxwidth: boxwidth),
-            SearchBox(boxwidth: boxwidth),
+            SearchBox(
+              boxwidth: boxwidth,
+              controller: _controller,
+            ),
             IconRow()
           ],
         ),
