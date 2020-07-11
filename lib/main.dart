@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginForm(),
         '/signup': (context) => SignUpForm(),
         '/confirm': (context) => ConfirmSignUp(),
-        '/home': (context) => HomeScreen()
+        '/home': (context) => HomeScreen(),
+        '/detail': (context) => DetailScreen()
       },
     );
   }
