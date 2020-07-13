@@ -1,3 +1,4 @@
+import 'package:ai/detail/UI/screen/detailscreen.dart';
 import 'package:ai/home/UI/screens/homebody.dart';
 import 'package:ai/home/UI/widgets/webappbar.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: WebAppBar(
-        size: Size(MediaQuery.of(context).size.width, 80),
+        size: Size(MediaQuery.of(context).size.width, 60),
       ),
-      body: HomeBody(),
+      body: ListView(children: [DetailScreen()]),
     );
   }
 }
