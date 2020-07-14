@@ -6,4 +6,6 @@ class RoutePaths {
   static const String Profile = '/profile';
   static const String Home = '/home';
   static const String ConfirmSignup = '/confirm';
+  static const String DetailPage = '/Detail';
+  // static const String
 }

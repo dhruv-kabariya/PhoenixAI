@@ -1,3 +1,4 @@
+import 'package:ai/answer/UI/Screens/answerscreen.dart';
 import 'package:ai/detail/UI/widget/conversationscreen.dart';
 import 'package:ai/detail/UI/widget/detailtabscreen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class TabScreens extends StatelessWidget {
       child: TabBarView(
         children: [
           DetailTabScreen(),
-          ConversationScreen(),
+          AnswerScreen(),
         ],
       ),
     );
