@@ -22,9 +22,9 @@ class _WebAppBarState extends State<WebAppBar> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[850],
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(30),
-        ),
+        // borderRadius: BorderRadius.vertical(
+        //   bottom: Radius.circular(30),
+        // ),
       ),
       child: Container(
         height: widget.size.height,

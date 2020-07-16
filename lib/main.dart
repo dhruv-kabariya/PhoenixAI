@@ -1,60 +1,57 @@
+import 'package:ai/authentication/bloc/authentication_bloc.dart';
 import 'package:ai/blocObserver.dart';
-import 'package:ai/constants/appConstant.dart';
-import 'package:ai/detail/bloc/detailpage_bloc.dart';
-
-import 'package:ai/home/bloc/homepage_bloc.dart';
+import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/locator.dart';
-import 'package:ai/login/bloc/authentication_bloc.dart';
-import 'package:ai/login/login_bloc/bloc/login_bloc.dart';
-import 'package:ai/login/ui/loginscreen.dart';
-import 'package:ai/router.dart';
-
-import 'package:ai/signup/bloc/signupbloc_bloc.dart';
-import 'package:ai/signup/ui/confirmSignUp.dart';
-import 'package:ai/signup/ui/signupscreen.dart';
+import 'package:ai/authentication/ui/screen/Authscreen.dart';
+import 'package:ai/services/userServices.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
 
   setupLocator();
-  runApp(MyApp());
+
+  final UserServices userServices = UserServices();
+  runApp(
+    BlocProvider(
+      create: (context) => AuthenticationBloc(userServices: userServices)
+        ..add(AuthenticationStarted()),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => SignupblocBloc()..add(SingupblocInitialEvent()),
-        ),
-        BlocProvider(
-          create: (context) => AuthenticationBloc()..add(AppLoaded()),
-        ),
-        BlocProvider(
-          create: (context) => HomepageBloc(),
-        ),
-        BlocProvider(
-          create: (context) => DetailpageBloc(),
-        ),
-        BlocProvider(
-          create: (context) => LoginBloc(),
-        ),
-      ],
-      child: MaterialApp(
-        initialRoute: "/",
-        onGenerateRoute: Router.generateRoute,
-        routes: {
-          // '/': (context) => HomeScreen(),
-          '/': (context) => LoginScreen(),
-          RoutePaths.Login: (context) => LoginForm(),
-          RoutePaths.Register: (context) => SignUpForm(),
-          RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
+    return MaterialApp(
+      // initialRoute: '/',
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationInitial) {
+            return Container(
+              color: Color(0xFF121212),
+            );
+          } else if (state is AuthenicationSuccess) {
+            return HomeScreen();
+          } else if (state is AuthentictionFailure) {
+            return AuthenticationScreen();
+          }
         },
       ),
+
+      // onGenerateRoute: Router.generateRoute,
+      // routes: {
+      //   // '/': (context) => HomeScreen(),
+      //   '/': (context) => LoginScreen(),
+      //   RoutePaths.Login: (context) => LoginForm(),
+      //   RoutePaths.Register: (context) => SignUpForm(),
+      //   RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
+      //   RoutePaths.Home: (context) => HomeScreen(),
+      // },
     );
   }
 }
