@@ -42,16 +42,6 @@ class MyApp extends StatelessWidget {
           }
         },
       ),
-
-      // onGenerateRoute: Router.generateRoute,
-      // routes: {
-      //   // '/': (context) => HomeScreen(),
-      //   '/': (context) => LoginScreen(),
-      //   RoutePaths.Login: (context) => LoginForm(),
-      //   RoutePaths.Register: (context) => SignUpForm(),
-      //   RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
-      //   RoutePaths.Home: (context) => HomeScreen(),
-      // },
     );
   }
 }

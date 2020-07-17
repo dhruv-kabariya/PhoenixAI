@@ -4,7 +4,6 @@ import 'package:ai/profile/graph.dart';
 import 'package:ai/profile/name_chip.dart';
 import 'package:ai/profile/post.dart';
 import 'package:ai/profile/social.dart';
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {

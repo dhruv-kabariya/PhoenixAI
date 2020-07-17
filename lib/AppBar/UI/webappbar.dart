@@ -1,10 +1,11 @@
-import 'package:ai/home/UI/widgets/iconrow.dart';
-import 'package:ai/home/UI/widgets/logo.dart';
-import 'package:ai/home/UI/widgets/searchbox.dart';
+import 'package:ai/AppBar/UI/iconrow.dart';
+import 'package:ai/AppBar/UI/logo.dart';
+import 'package:ai/AppBar/UI/searchbox.dart';
+import 'package:ai/AppBar/bloc/webappbar_bloc.dart';
 import 'package:flutter/material.dart';
 
 class WebAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const WebAppBar({Key key, this.size}) : super(key: key);
+  const WebAppBar({Key key, @required this.size}) : super(key: key);
   final Size size;
 
   @override
@@ -18,6 +19,8 @@ class _WebAppBarState extends State<WebAppBar> {
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    WebappbarBloc bloc = WebappbarBloc();
+
     double boxwidth = MediaQuery.of(context).size.width / 100;
     return Container(
       decoration: BoxDecoration(

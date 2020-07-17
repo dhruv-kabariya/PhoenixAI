@@ -1,6 +1,5 @@
-import 'package:ai/answer/UI/Screens/answerscreen.dart';
-import 'package:ai/detail/UI/widget/conversationscreen.dart';
-import 'package:ai/detail/UI/widget/detailtabscreen.dart';
+import 'package:ai/detail/UI/conversationscreen/conversationscreen.dart';
+import 'package:ai/detail/UI/detailscreen/detailtabscreen.dart';
 import 'package:flutter/material.dart';
 
 class TabScreens extends StatelessWidget {
@@ -11,12 +10,12 @@ class TabScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height - 200,
       width: MediaQuery.of(context).size.width,
       child: TabBarView(
         children: [
           DetailTabScreen(),
-          AnswerScreen(),
+          ConversationScreen(),
         ],
       ),
     );

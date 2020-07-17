@@ -4,6 +4,7 @@ import 'package:ai/services/userServices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class LoginForm extends StatefulWidget {
   LoginForm({Key key, @required this.authBloc, @required this.userServices})
       : assert(userServices != null),
@@ -154,7 +155,9 @@ class _LoginFormState extends State<LoginForm> {
                           margin: EdgeInsets.only(right: 10),
                           elevation: 5,
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              bloc.add(LoginWithGoogle());
+                            },
                             child: Image.asset("google.png"),
                           ),
                         ),

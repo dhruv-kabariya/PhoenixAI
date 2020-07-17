@@ -39,7 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       String token =
           await userServices.signInWithCredentials(username, password);
       authbloc.add(AuthenticationLoggedIn(token: token));
-      yield LoginInitial();
+      // yield LoginInitial();
     } catch (e) {
       yield LoginFail(error: e);
     }
@@ -51,7 +51,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       String token = await userServices.signInWith3RDPart();
       authbloc.add(AuthenticationLoggedIn(token: token));
-      yield LoginInitial();
+      // yield LoginInitial();
     } catch (e) {
       yield LoginFail(error: e);
     }
@@ -63,7 +63,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       String token = await userServices.signInWith3RDPart();
       authbloc.add(AuthenticationLoggedIn(token: token));
-      yield LoginInitial();
+      // yield LoginInitial();
     } catch (e) {
       yield LoginFail(error: e);
     }

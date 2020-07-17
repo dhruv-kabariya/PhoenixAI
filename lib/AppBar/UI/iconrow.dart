@@ -1,4 +1,5 @@
-import 'package:ai/home/UI/widgets/overlay.dart';
+import 'package:ai/AppBar/UI/overlay.dart';
+import 'package:ai/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class IconRow extends StatefulWidget {
@@ -27,13 +28,6 @@ class _IconRowState extends State<IconRow> {
             _overlayEntry.remove();
           },
           child: Stack(
-            // left: offset.dx + 100,
-            // top: offset.dy + size.height - 10,
-            // width: 100,
-            // alignment: Alignment.topRight,
-            // heightFactor: offset.dx + 100,
-            // widthFactor: 100,
-
             children: [
               Positioned(
                 left: offset.dx + 90,
@@ -75,28 +69,33 @@ class _IconRowState extends State<IconRow> {
         children: [
           Container(
             height: 40,
-            child: Row(
-              children: [
-                Container(
-
-                  margin: EdgeInsets.all(5),
-                  width: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("profile.jpg"), fit: BoxFit.cover),
-                    shape: BoxShape.circle,
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
+              },
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    width: 30,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("profile.jpg"), fit: BoxFit.cover),
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                Container(
-                  child: Text(
-                    "Rashmika",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
-                  ),
-                )
-              ],
+                  Container(
+                    child: Text(
+                      "Rashmika",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -111,7 +110,6 @@ class _IconRowState extends State<IconRow> {
             },
             child: Container(
               margin: EdgeInsets.all(10),
-
               decoration: BoxDecoration(
                   color: Color(0xB3121212), shape: BoxShape.circle),
               padding: EdgeInsets.all(5),
@@ -124,7 +122,7 @@ class _IconRowState extends State<IconRow> {
           ),
           Container(
             padding: EdgeInsets.all(12),
-     margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
+            margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Color(0xB3121212),

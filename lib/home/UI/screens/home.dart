@@ -1,5 +1,5 @@
-import 'package:ai/detail/UI/screen/detailscreen.dart';
-import 'package:ai/home/UI/widgets/webappbar.dart';
+import 'package:ai/home/UI/screens/homebody.dart';
+import 'package:ai/AppBar/UI/webappbar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,11 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: WebAppBar(
         size: Size(MediaQuery.of(context).size.width, 60),
       ),
-      body: ListView(
-        children: [
-          DetailScreen(),
-        ],
-      ),
+      body: HomeBody(),
     );
   }
 }
