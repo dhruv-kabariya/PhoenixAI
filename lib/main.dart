@@ -3,6 +3,7 @@ import 'package:ai/blocObserver.dart';
 import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/locator.dart';
 import 'package:ai/authentication/ui/screen/Authscreen.dart';
+import 'package:ai/questtions/form/questionForm.dart';
 import 'package:ai/services/userServices.dart';
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ void main() async {
 
   setupLocator();
 
-  final UserServices userServices = UserServices();
+  UserServices userServices = locator<UserServices>();
   runApp(
     BlocProvider(
       create: (context) => AuthenticationBloc(userServices: userServices)
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
           } else if (state is AuthenicationSuccess) {
             return HomeScreen();
           } else if (state is AuthentictionFailure) {
-            return AuthenticationScreen();
+            return QuestionForm();
           }
         },
       ),

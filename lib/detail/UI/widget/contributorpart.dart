@@ -1,4 +1,3 @@
-import 'package:ai/detail/UI/screen/detailscreen.dart';
 import 'package:ai/detail/UI/widget/contributor.dart';
 import 'package:flutter/material.dart';
 

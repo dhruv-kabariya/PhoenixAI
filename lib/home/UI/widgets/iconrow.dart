@@ -39,27 +39,35 @@ class _IconRowState extends State<IconRow> {
                 left: offset.dx + 90,
                 top: offset.dy + size.height - 10,
                 width: 100,
-                child: ClipPath(
-                  clipper: OverlayClipper(),
-                  child: Material(
-                    // borderRadius: BorderRadius.circular(20),
-                    // clipBehavior: Clip.antiAlias,
+                child: Material(
+                  // borderRadius: BorderRadius.circular(20),
+                  // clipBehavior: Clip.antiAlias,
 
-                    child: Column(
-                      children: <Widget>[
-                        ListTile(
-                          onTap: () {
-                            _overlayEntry.remove();
-                          },
-                          title: Text('Syria'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            _overlayEntry.remove();
-                          },
-                          title: Text('Lebanon'),
-                        )
-                      ],
+                  child: Container(
+                    height: 150,
+                    width: 70,
+                    child: CustomPaint(
+                      painter: DrawContainerPainter(),
+                      child: Column(
+                        children: [
+                          Container(
+                              // child:
+                              // ListTile(
+                              //   onTap: () {
+                              //     _overlayEntry.remove();
+                              //   },
+                              //   title: Text('Syria'),
+                              // ),
+                              // ListTile(
+                              //   onTap: () {
+                              //     _overlayEntry.remove();
+                              //   },
+                              //   title: Text('Lebanon'),
+                              // )
+
+                              ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -78,7 +86,6 @@ class _IconRowState extends State<IconRow> {
             child: Row(
               children: [
                 Container(
-
                   margin: EdgeInsets.all(5),
                   width: 30,
                   decoration: BoxDecoration(
@@ -111,7 +118,6 @@ class _IconRowState extends State<IconRow> {
             },
             child: Container(
               margin: EdgeInsets.all(10),
-
               decoration: BoxDecoration(
                   color: Color(0xB3121212), shape: BoxShape.circle),
               padding: EdgeInsets.all(5),
@@ -124,7 +130,7 @@ class _IconRowState extends State<IconRow> {
           ),
           Container(
             padding: EdgeInsets.all(12),
-     margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
+            margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Color(0xB3121212),

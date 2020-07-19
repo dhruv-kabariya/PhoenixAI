@@ -1,6 +1,5 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:ai/profile/constants.dart';
 
 class Social extends StatelessWidget {
   const Social({
