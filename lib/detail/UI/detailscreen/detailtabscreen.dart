@@ -10,8 +10,9 @@ class DetailTabScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
-      children: [DetailTab(), CotriButorPart()],
-    ));
+      child: Row(
+        children: [DetailTab(), CotriButorPart()],
+      ),
+    );
   }
 }

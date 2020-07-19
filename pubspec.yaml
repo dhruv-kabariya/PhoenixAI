@@ -35,11 +35,19 @@ dependencies:
   get_it: ^4.0.2
   json_serializable: ^3.3.0
   file_picker_web: ^1.0.1+1
+  
+  hive: ^1.4.1+1
+  hive_flutter: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^0.7.0+2
   build_runner: ^1.10.0
+
+dependency_overrides:
+  dartx:
+  path: 1.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

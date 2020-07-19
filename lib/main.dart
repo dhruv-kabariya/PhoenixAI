@@ -1,8 +1,9 @@
 import 'package:ai/authentication/bloc/authentication_bloc.dart';
+import 'package:ai/authentication/ui/screen/Authscreen.dart';
 import 'package:ai/blocObserver.dart';
 import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/locator.dart';
-import 'package:ai/authentication/ui/screen/Authscreen.dart';
+
 import 'package:ai/questtions/form/questionForm.dart';
 import 'package:ai/services/userServices.dart';
 
@@ -39,20 +40,10 @@ class MyApp extends StatelessWidget {
           } else if (state is AuthenicationSuccess) {
             return HomeScreen();
           } else if (state is AuthentictionFailure) {
-            return QuestionForm();
+            return AuthenticationScreen();
           }
         },
       ),
-
-      // onGenerateRoute: Router.generateRoute,
-      // routes: {
-      //   // '/': (context) => HomeScreen(),
-      //   '/': (context) => LoginScreen(),
-      //   RoutePaths.Login: (context) => LoginForm(),
-      //   RoutePaths.Register: (context) => SignUpForm(),
-      //   RoutePaths.ConfirmSignup: (context) => ConfirmSignUp(),
-      //   RoutePaths.Home: (context) => HomeScreen(),
-      // },
     );
   }
 }

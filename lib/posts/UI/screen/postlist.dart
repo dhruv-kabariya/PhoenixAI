@@ -1,4 +1,4 @@
-import 'package:ai/home/UI/widgets/PostCard.dart';
+import 'package:ai/posts/UI/widgets/PostCard.dart';
 import 'package:flutter/material.dart';
 
 class PostList extends StatelessWidget {
