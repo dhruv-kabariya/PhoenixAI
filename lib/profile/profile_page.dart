@@ -135,7 +135,7 @@ class ProfilePage extends StatelessWidget {
                                   ),
                                   Wrap(
                                     children: [
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",
@@ -145,7 +145,7 @@ class ProfilePage extends StatelessWidget {
                                         size: size,
                                         kStyleBody: kStyleBody,
                                       ),
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",
@@ -155,7 +155,7 @@ class ProfilePage extends StatelessWidget {
                                         size: size,
                                         kStyleBody: kStyleBody,
                                       ),
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",
@@ -165,7 +165,7 @@ class ProfilePage extends StatelessWidget {
                                         size: size,
                                         kStyleBody: kStyleBody,
                                       ),
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",
@@ -175,7 +175,7 @@ class ProfilePage extends StatelessWidget {
                                         size: size,
                                         kStyleBody: kStyleBody,
                                       ),
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",
@@ -185,7 +185,7 @@ class ProfilePage extends StatelessWidget {
                                         size: size,
                                         kStyleBody: kStyleBody,
                                       ),
-                                      Post(
+                                      PostWidget(
                                         titleText:
                                             "Artificial intelligence would be the ultimate version of Google.",
                                         codeCounter: "200",

@@ -1,8 +1,8 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
-class Post extends StatelessWidget {
-  const Post({
+class PostWidget extends StatelessWidget {
+  const PostWidget({
     Key key,
     @required this.kStyleHead,
     @required this.size,

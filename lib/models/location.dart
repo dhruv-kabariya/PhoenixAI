@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'location.g.dart';
 
+@JsonSerializable(nullable: false)
 class Location extends Equatable {
   final String city;
   final String country;
@@ -10,4 +13,7 @@ class Location extends Equatable {
 
   @override
   List<Object> get props => [city, state, country];
+  factory Location.fromJson(Map<String, dynamic> json) =>
+      _$LocationFromJson(json);
+  Map<String, dynamic> toJson() => _$LocationToJson(this);
 }

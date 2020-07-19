@@ -1,10 +1,14 @@
 import 'package:ai/models/location.dart';
+import 'package:ai/models/post.dart';
 import 'package:ai/models/question.dart';
 import 'package:ai/models/try.dart';
 import 'package:ai/profile/post.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'profile.g.dart';
 
+@JsonSerializable(nullable: false)
 class Profile extends Equatable {
   final int id;
   final String username;
@@ -64,4 +68,7 @@ class Profile extends Equatable {
         no_of_savedBookmark,
         tags
       ];
+  factory Profile.fromJson(Map<String, dynamic> json) =>
+      _$ProfileFromJson(json);
+  Map<String, dynamic> toJson() => _$ProfileToJson(this);
 }

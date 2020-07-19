@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'try.g.dart';
 
+@JsonSerializable(nullable: false)
 class Try extends Equatable {
   final int id;
   final int post_id;
@@ -46,4 +49,7 @@ class Try extends Equatable {
         photos,
         videos
       ];
+
+  factory Try.fromJson(Map<String, dynamic> json) => _$TryFromJson(json);
+  Map<String, dynamic> toJson() => _$TryToJson(this);
 }
