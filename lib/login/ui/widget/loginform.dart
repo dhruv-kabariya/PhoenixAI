@@ -32,10 +32,9 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    LoginBloc bloc =
-        LoginBloc(authbloc: widget.authBloc, userServices: widget.userServices);
     return BlocBuilder(
-      bloc: bloc,
+      bloc: LoginBloc(
+          authbloc: widget.authBloc, userServices: widget.userServices),
       builder: (context, state) {
         return Container(
           child: Form(
@@ -94,26 +93,33 @@ class _LoginFormState extends State<LoginForm> {
                     height: 40,
                     margin: EdgeInsets.only(top: 8, bottom: 8),
                     child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        color: Colors.indigo,
-                        onPressed: () {
-                          bloc.add(LoginWithCredential(
-                              username: _userId.text,
-                              password: _password.text));
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: state == LoginInProgress()
-                              ? CircularProgressIndicator()
-                              : Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      color: Colors.indigo,
+                      onPressed: () {
+                        LoginBloc(
+                                authbloc: widget.authBloc,
+                                userServices: widget.userServices)
+                            .add(
+                          LoginWithCredential(
+                              username: _userId.text, password: _password.text),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: state == LoginInProgress()
+                            ? CircularProgressIndicator()
+                            : Text(
+                                "Login",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                        )),
+                              ),
+                      ),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 8),
@@ -156,7 +162,10 @@ class _LoginFormState extends State<LoginForm> {
                           elevation: 5,
                           child: InkWell(
                             onTap: () {
-                              bloc.add(LoginWithGoogle());
+                              LoginBloc(
+                                      authbloc: widget.authBloc,
+                                      userServices: widget.userServices)
+                                  .add(LoginWithGoogle());
                             },
                             child: Image.asset("google.png"),
                           ),
@@ -167,7 +176,10 @@ class _LoginFormState extends State<LoginForm> {
                           elevation: 5,
                           child: InkWell(
                             onTap: () {
-                              bloc.add(LoginWithGoogle());
+                              LoginBloc(
+                                      authbloc: widget.authBloc,
+                                      userServices: widget.userServices)
+                                  .add(LoginWithGoogle());
                             },
                             child: Container(
                               child: Padding(
@@ -187,7 +199,10 @@ class _LoginFormState extends State<LoginForm> {
                             elevation: 5,
                             child: InkWell(
                               onTap: () {
-                                bloc.add(LoginWithLinkedIn());
+                                LoginBloc(
+                                        authbloc: widget.authBloc,
+                                        userServices: widget.userServices)
+                                    .add(LoginWithLinkedIn());
                               },
                               child: Container(
                                 child: Padding(
@@ -223,7 +238,7 @@ class _LoginFormState extends State<LoginForm> {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

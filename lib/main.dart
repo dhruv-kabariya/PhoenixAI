@@ -1,8 +1,10 @@
 import 'package:ai/authentication/bloc/authentication_bloc.dart';
+import 'package:ai/authentication/ui/screen/Authscreen.dart';
 import 'package:ai/blocObserver.dart';
 import 'package:ai/home/UI/screens/home.dart';
 import 'package:ai/locator.dart';
-import 'package:ai/authentication/ui/screen/Authscreen.dart';
+
+import 'package:ai/questtions/form/questionForm.dart';
 import 'package:ai/services/userServices.dart';
 
 import 'package:flutter/material.dart';
@@ -14,7 +16,7 @@ void main() async {
 
   setupLocator();
 
-  final UserServices userServices = UserServices();
+  UserServices userServices = locator<UserServices>();
   runApp(
     BlocProvider(
       create: (context) => AuthenticationBloc(userServices: userServices)

@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'answer.g.dart';
 
+@JsonSerializable(nullable: false)
 class Answers extends Equatable {
   final int ans_id;
 
@@ -26,7 +29,6 @@ class Answers extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         ans_id,
         question_id,
@@ -37,4 +39,7 @@ class Answers extends Equatable {
         answer,
         tags
       ];
+  factory Answers.fromJson(Map<String, dynamic> json) =>
+      _$AnswersFromJson(json);
+  Map<String, dynamic> toJson() => _$AnswersToJson(this);
 }

@@ -21,7 +21,6 @@ class AddingBookMark extends PostInitial {
   AddingBookMark({@required this.id});
 
   @override
-  // TODO: implement props
   List<Object> get props => [id];
 }
 
@@ -30,6 +29,5 @@ class AddedBookMark extends PostState {
   AddedBookMark({@required this.id});
 
   @override
-  // TODO: implement props
   List<Object> get props => [id];
 }

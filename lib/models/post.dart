@@ -1,10 +1,13 @@
 import 'package:ai/models/otheruser.dart';
-import 'package:ai/models/profile.dart';
+
 import 'package:ai/models/question.dart';
 import 'package:ai/models/try.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'post.g.dart';
 
+@JsonSerializable(nullable: false)
 class Post extends Equatable {
   final int id;
   final int creators_id;
@@ -37,7 +40,6 @@ class Post extends Equatable {
       @required this.tags});
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         id,
         creators_id,
@@ -52,4 +54,6 @@ class Post extends Equatable {
         no_of_try,
         tags,
       ];
+  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+  Map<String, dynamic> toJson() => _$PostToJson(this);
 }

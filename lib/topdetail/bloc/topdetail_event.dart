@@ -4,7 +4,6 @@ abstract class TopdetailEvent extends Equatable {
   const TopdetailEvent();
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 

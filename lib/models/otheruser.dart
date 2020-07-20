@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'otheruser.g.dart';
 
+@JsonSerializable(nullable: false)
 class OtherUser extends Equatable {
   final int id;
   final String first_name;
@@ -21,7 +24,9 @@ class OtherUser extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props =>
       [id, first_name, last_name, followers, following, photo_link, tags];
+  factory OtherUser.fromJson(Map<String, dynamic> json) =>
+      _$OtherUserFromJson(json);
+  Map<String, dynamic> toJson() => _$OtherUserToJson(this);
 }

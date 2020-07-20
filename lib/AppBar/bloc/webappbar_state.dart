@@ -16,7 +16,6 @@ class SearchResult extends SearchState {
   final String result;
   SearchResult({@required this.result});
   @override
-  // TODO: implement props
   List<Object> get props => [result];
 }
 
@@ -27,6 +26,5 @@ class SearchError extends SearchState {
   SearchError({@required this.error});
 
   @override
-  // TODO: implement props
   List<Object> get props => [error];
 }

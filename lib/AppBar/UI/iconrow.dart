@@ -33,27 +33,35 @@ class _IconRowState extends State<IconRow> {
                 left: offset.dx + 90,
                 top: offset.dy + size.height - 10,
                 width: 100,
-                child: ClipPath(
-                  clipper: OverlayClipper(),
-                  child: Material(
-                    // borderRadius: BorderRadius.circular(20),
-                    // clipBehavior: Clip.antiAlias,
+                child: Material(
+                  // borderRadius: BorderRadius.circular(20),
+                  // clipBehavior: Clip.antiAlias,
 
-                    child: Column(
-                      children: <Widget>[
-                        ListTile(
-                          onTap: () {
-                            _overlayEntry.remove();
-                          },
-                          title: Text('Syria'),
-                        ),
-                        ListTile(
-                          onTap: () {
-                            _overlayEntry.remove();
-                          },
-                          title: Text('Lebanon'),
-                        )
-                      ],
+                  child: Container(
+                    height: 150,
+                    width: 70,
+                    child: CustomPaint(
+                      painter: DrawContainerPainter(),
+                      child: Column(
+                        children: [
+                          Container(
+                              // child:
+                              // ListTile(
+                              //   onTap: () {
+                              //     _overlayEntry.remove();
+                              //   },
+                              //   title: Text('Syria'),
+                              // ),
+                              // ListTile(
+                              //   onTap: () {
+                              //     _overlayEntry.remove();
+                              //   },
+                              //   title: Text('Lebanon'),
+                              // )
+
+                              ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -72,7 +80,10 @@ class _IconRowState extends State<IconRow> {
             child: InkWell(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(),
+                  ),
+                );
               },
               child: Row(
                 children: [
@@ -81,7 +92,9 @@ class _IconRowState extends State<IconRow> {
                     width: 30,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("profile.jpg"), fit: BoxFit.cover),
+                        image: AssetImage("profile.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                       shape: BoxShape.circle,
                     ),
                   ),

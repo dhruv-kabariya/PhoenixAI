@@ -59,6 +59,13 @@ class UserServices {
 
   Future<User> getUser() async {
     await Future.delayed(Duration(milliseconds: 300));
+    user = User(
+      email: "dhruvKabariya1@gmail.com",
+      github: "github.com",
+      linkedin: "linkedin.com",
+      name: "Dhruv Kabaiya",
+      password: "Dhruv",
+    );
     return user;
   }
 
@@ -70,5 +77,15 @@ class UserServices {
       print(e);
       return false;
     }
+  }
+
+  Future<User> getInfomation() async {
+    return User(
+      email: "dhruvKabariya1@gmail.com",
+      github: "github.com",
+      linkedin: "linkedin.com",
+      name: "Dhruv Kabaiya",
+      password: "Dhruv",
+    );
   }
 }
