@@ -18,29 +18,32 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     double boxwidth = MediaQuery.of(context).size.width / 100;
 
     return Container(
-        child: Container(
-      decoration: BoxDecoration(
-          gradient: RadialGradient(
-              colors: [Colors.indigoAccent[200], Colors.indigoAccent[100]])),
-      child: Center(
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: RadialGradient(
+                colors: [Colors.indigoAccent[200], Colors.indigoAccent[100]])),
+        child: Center(
           child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        elevation: 20,
-        child: Container(
-          height: boxheight * 80,
-          width: boxwidth * 70,
-          alignment: Alignment.center,
-          child: Row(
-            children: [
-              CardPhoto(),
-              CardOptions(
-                height: boxheight * 80,
-                width: boxwidth * 70,
-              )
-            ],
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            elevation: 20,
+            child: Container(
+              height: boxheight * 80,
+              width: boxwidth * 70,
+              alignment: Alignment.center,
+              child: Row(
+                children: [
+                  CardPhoto(),
+                  CardOptions(
+                    height: boxheight * 80,
+                    width: boxwidth * 70,
+                  )
+                ],
+              ),
+            ),
           ),
         ),
-      )),
-    ));
+      ),
+    );
   }
 }

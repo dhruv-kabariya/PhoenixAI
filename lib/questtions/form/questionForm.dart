@@ -2,8 +2,11 @@
 
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
+
+import 'package:ai/questtions/bloc/question_bloc.dart';
 import 'package:file_picker_web/file_picker_web.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class QuestionForm extends StatelessWidget {
   @override
@@ -50,102 +53,111 @@ class _QuestionFormWidgetState extends State<QuestionFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        width: MediaQuery.of(context).size.width / 2,
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          color: Colors.white,
-          elevation: 10,
-          shadowColor: Colors.yellow,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Form(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: QuestionTextForm(
-                      title: "Enter Title",
-                      controller: _titleController,
+    return BlocBuilder<QuestionBloc, QuestionState>(
+      builder: (context, state) {
+        if (state is QuestionFormLoadedState) {
+          return Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              width: MediaQuery.of(context).size.width / 2,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                shadowColor: Colors.yellow,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Form(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: QuestionTextForm(
+                            title: "Enter Title",
+                            controller: _titleController,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: QuestionTextForm(
+                            title: "Enter Desc",
+                            controller: _descController,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: QuestionTextForm(
+                            title: "Enter Tag",
+                            controller: _tagController,
+                          ),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "select Image",
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: InkWell(
+                                onTap: () {
+                                  _pickFiles();
+                                },
+                                child: Icon(Icons.camera),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                "select Video",
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: InkWell(
+                                onTap: _pickVideo,
+                                child: Icon(Icons.video_label),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: RaisedButton(
+                              color: Colors.deepOrangeAccent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              onPressed: () {},
+                              child: Text("Submit"),
+                            ),
+                          ),
+                        ),
+                        // QuestionTextForm(title: "Enter Title",),
+                        // QuestionTextForm(title: "Enter Title",),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: QuestionTextForm(
-                      title: "Enter Desc",
-                      controller: _descController,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: QuestionTextForm(
-                      title: "Enter Tag",
-                      controller: _tagController,
-                    ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          "select Image",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: InkWell(
-                          onTap: () {
-                            _pickFiles();
-                          },
-                          child: Icon(Icons.camera),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          "select Video",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: InkWell(
-                          onTap: _pickVideo,
-                          child: Icon(Icons.video_label),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: RaisedButton(
-                        color: Colors.deepOrangeAccent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        onPressed: () {},
-                        child: Text("Submit"),
-                      ),
-                    ),
-                  ),
-                  // QuestionTextForm(title: "Enter Title",),
-                  // QuestionTextForm(title: "Enter Title",),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ),
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

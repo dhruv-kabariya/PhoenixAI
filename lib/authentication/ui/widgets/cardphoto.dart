@@ -11,8 +11,9 @@ class CardPhoto extends StatelessWidget {
       flex: 4,
       child: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/ai.jpg"), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: AssetImage("assets/ai.jpg"), fit: BoxFit.cover),
+        ),
       ),
     );
   }
