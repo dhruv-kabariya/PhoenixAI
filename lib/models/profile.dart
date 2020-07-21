@@ -1,4 +1,5 @@
 import 'package:ai/models/location.dart';
+import 'package:ai/models/post.dart';
 import 'package:ai/models/question.dart';
 import 'package:ai/models/try.dart';
 import 'package:ai/profile/post.dart';
@@ -44,7 +45,6 @@ class Profile extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         id,
         username,

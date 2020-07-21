@@ -15,7 +15,7 @@ class CardOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthenticationBloc authbloc = BlocProvider.of<AuthenticationBloc>(context);
+    // AuthenticationBloc authbloc = BlocProvider.of<AuthenticationBloc>(context);
 
     return Expanded(
       flex: 5,
@@ -39,22 +39,27 @@ class CardOptions extends StatelessWidget {
                 margin:
                     EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
                 child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  bloc: authbloc,
+                  bloc: BlocProvider.of<AuthenticationBloc>(context),
                   builder: (context, state) {
                     if (state is AuthenticationLogin) {
                       return LoginForm(
-                        authBloc: authbloc,
-                        userServices: authbloc.userServices,
+                        authBloc: BlocProvider.of<AuthenticationBloc>(context),
+                        userServices:
+                            BlocProvider.of<AuthenticationBloc>(context)
+                                .userServices,
                       );
                     } else if (state is AuthenticationSignUp) {
                       return SignUpForm(
-                        authbloc: authbloc,
-                        userServices: authbloc.userServices,
+                        authbloc: BlocProvider.of<AuthenticationBloc>(context),
+                        userServices:
+                            BlocProvider.of<AuthenticationBloc>(context)
+                                .userServices,
                       );
                     }
                     return LoginForm(
-                      authBloc: authbloc,
-                      userServices: authbloc.userServices,
+                      authBloc: BlocProvider.of<AuthenticationBloc>(context),
+                      userServices: BlocProvider.of<AuthenticationBloc>(context)
+                          .userServices,
                     );
                   },
                 )

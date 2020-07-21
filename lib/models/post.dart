@@ -4,7 +4,6 @@ import 'package:ai/models/otheruser.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-// ignore: must_be_immutable
 class Post extends Equatable {
   final int id;
   final OtherUser creators_id;
@@ -38,7 +37,6 @@ class Post extends Equatable {
       @required this.tags});
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         id,
         creators_id,

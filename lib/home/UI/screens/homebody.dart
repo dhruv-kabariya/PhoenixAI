@@ -1,6 +1,6 @@
 import 'package:ai/posts/UI/screen/postlist.dart';
-import 'package:ai/userhome/UI/screens/useroptions.dart';
-import 'package:ai/topdetail/UI/topScreen.dart';
+import 'package:ai/userhome/useroptions.dart';
+import 'package:ai/topdetail/topScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeBody extends StatefulWidget {

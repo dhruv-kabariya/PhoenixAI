@@ -24,7 +24,6 @@ class Question extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props =>
       [q_id, post_id, creators_id, no_of_answer, time, question, photos, tags];
 }

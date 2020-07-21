@@ -16,7 +16,6 @@ class AuthenticationBloc
 
   final UserServices userServices;
 
-  @override
   AuthenticationState get initialState => AuthenticationInitial();
 
   @override

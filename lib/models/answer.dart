@@ -25,7 +25,6 @@ class Answers extends Equatable {
       @required this.photos});
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         ans_id,
         question_id,
