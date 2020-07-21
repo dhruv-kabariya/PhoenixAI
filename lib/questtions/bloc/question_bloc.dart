@@ -12,5 +12,37 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
   @override
   Stream<QuestionState> mapEventToState(
     QuestionEvent event,
-  ) async* {}
+  ) async* {
+    if (event is QuestionSubmittingEvent) {
+      _mapToSubmitQuestionForm();
+    }
+    if (event is QuestionFormLoadingEvent) {
+      _mapLoadingToLoadedForm();
+    }
+    if (event is QuestionSubmittingEvent) {
+      yield QuestionSubmittingState();
+    }
+    if (event is QuestionLoadedImageEvent) {
+      yield QuestionLoadedImageState();
+    }
+    if (event is QuestionLoadingImageEvent) {
+      yield QuestionLoadingImageState();
+    }
+    if (event is QuestionLoadedVideoEvent) {
+      yield QuestionLoadedVideoState();
+    }
+    if (event is QuestionLoadingVideoEvent) {
+      yield QuestionLoadingVideoState();
+    }
+  }
+
+  _mapToSubmitQuestionForm() async* {
+    yield QuestionSubmittingState();
+    yield QuestionSubmittedState();
+  }
+
+  _mapLoadingToLoadedForm() async* {
+    yield QuestionFormLoadingState();
+    yield QuestionFormLoadedState();
+  }
 }
