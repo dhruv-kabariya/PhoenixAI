@@ -14,28 +14,26 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                child: UserOptions(),
-              ),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              child: UserOptions(),
             ),
-            Expanded(
-              flex: 8,
-              child: Container(
-                padding: EdgeInsets.only(top: 20),
-                child: PostList(),
-              ),
+          ),
+          Expanded(
+            flex: 8,
+            child: Container(
+              padding: EdgeInsets.only(top: 20),
+              child: PostList(),
             ),
-            Expanded(
-              flex: 3,
-              child: Container(child: TopPanel()),
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(child: TopPanel()),
+          ),
+        ],
       ),
     );
   }

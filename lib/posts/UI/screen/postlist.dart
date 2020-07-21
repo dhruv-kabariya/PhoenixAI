@@ -1,5 +1,8 @@
 import 'package:ai/posts/UI/widgets/PostCard.dart';
+import 'package:ai/posts/bloc/post_bloc.dart';
+import 'package:ai/services/postServices.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostList extends StatelessWidget {
   const PostList({
@@ -8,16 +11,53 @@ class PostList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String text =
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ";
+    PostServices postServices = PostServices();
+    PostBloc bloc = PostBloc(postServices: postServices)..add(GetPost());
 
     double boxHeight = MediaQuery.of(context).size.height / 100;
     double boxWidth = MediaQuery.of(context).size.width / 100;
-    return ListView.builder(
-      itemCount: 3,
-      itemBuilder: (BuildContext context, int index) {
-        return PostCard(boxHeight: boxHeight);
+    return
+        // BlocListener<PostBloc, PostState>(
+        //   listener: (context, state) {
+        //     if (state is FailMorePostLoading) {
+        //       final snackbar = SnackBar(
+        //         content: Text("No More Post"),
+        //       );
+
+        //       // Scaffold.of(context).showSnackBar(snackbar);
+        //     }
+        //   },
+        //   bloc: bloc,
+        //   child:
+        BlocBuilder<PostBloc, PostState>(
+      bloc: bloc,
+      builder: (context, state) {
+        if (state is PostLoading || state is PostInitial) {
+          return Container(
+              alignment: Alignment.center, child: CircularProgressIndicator());
+        } else if (state is PostLoaded) {
+          return CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  return PostCard(
+                    boxHeight: boxHeight,
+                    post: state.postList[index],
+                  );
+                }, childCount: state.postList.length),
+              ),
+            ],
+          );
+        }
       },
+      // ),
     );
   }
 }
+
+// ListView.builder(
+//   itemCount: 3,
+//   itemBuilder: (BuildContext context, int index) {
+//     return PostCard(boxHeight: boxHeight);
+//   },
+// );

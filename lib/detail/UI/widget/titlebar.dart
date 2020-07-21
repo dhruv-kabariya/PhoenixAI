@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TitleBar extends StatelessWidget {
+  final String title;
+
   const TitleBar({
+    @required this.title,
     Key key,
   }) : super(key: key);
 
@@ -17,7 +20,7 @@ class TitleBar extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
-              "GAN with Parameters Setting",
+              title,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),

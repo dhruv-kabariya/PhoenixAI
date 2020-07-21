@@ -1,10 +1,11 @@
+import 'package:ai/models/otheruser.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 class Try extends Equatable {
   final int id;
   final int post_id;
-  final int creator_id;
+  final OtherUser creator_id;
 
   final String what_new_short;
   final String what_new_indetail;
@@ -14,7 +15,8 @@ class Try extends Equatable {
   final List<String> photos;
   final List<String> videos;
   final String explanation;
-  final String time;
+  final DateTime time;
+  final List<String> tags;
 
   Try({
     @required this.id,
@@ -29,6 +31,7 @@ class Try extends Equatable {
     @required this.github_link,
     @required this.photos,
     @required this.videos,
+    @required this.tags,
   });
 
   @override
@@ -45,6 +48,7 @@ class Try extends Equatable {
         explanation,
         github_link,
         photos,
-        videos
+        tags,
+        videos,
       ];
 }

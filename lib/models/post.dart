@@ -1,14 +1,14 @@
 import 'package:ai/models/otheruser.dart';
-import 'package:ai/models/profile.dart';
-import 'package:ai/models/question.dart';
-import 'package:ai/models/try.dart';
+// import 'package:ai/models/question.dart';
+// import 'package:ai/models/try.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
+// ignore: must_be_immutable
 class Post extends Equatable {
   final int id;
-  final int creators_id;
-  List<OtherUser> contributors_list;
+  final OtherUser creators_id;
+  final List<OtherUser> contributors_list;
   final DateTime timecreated;
   final String title;
   final String about;
@@ -19,12 +19,13 @@ class Post extends Equatable {
   final int no_of_try;
   final int no_of_star;
   final int no_of_question;
-  List<Question> question_list;
-  List<Try> try_list;
+  // List<Question> question_list;
+  //  List<Try> try_list;
 
   Post(
       {@required this.id,
       @required this.creators_id,
+      @required this.contributors_list,
       @required this.timecreated,
       @required this.title,
       @required this.about,
@@ -41,6 +42,7 @@ class Post extends Equatable {
   List<Object> get props => [
         id,
         creators_id,
+        contributors_list,
         timecreated,
         title,
         about,

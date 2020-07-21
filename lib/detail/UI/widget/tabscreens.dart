@@ -1,9 +1,13 @@
-import 'package:ai/detail/UI/conversationscreen/conversationscreen.dart';
+import 'package:ai/detail/UI/question/questionScreen.dart';
 import 'package:ai/detail/UI/detailscreen/detailtabscreen.dart';
+import 'package:ai/models/post.dart';
 import 'package:flutter/material.dart';
 
 class TabScreens extends StatelessWidget {
+  final Post post;
+
   const TabScreens({
+    @required this.post,
     Key key,
   }) : super(key: key);
 
@@ -14,8 +18,10 @@ class TabScreens extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: TabBarView(
         children: [
-          DetailTabScreen(),
-          ConversationScreen(),
+          DetailTabScreen(
+            post: post,
+          ),
+          QuestionScreen(),
         ],
       ),
     );

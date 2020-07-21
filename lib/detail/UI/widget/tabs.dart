@@ -10,15 +10,16 @@ class Tabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey[900],
-      constraints: BoxConstraints.expand(height: 50),
+      // constraints: BoxConstraints.expand(height: 50),
+
       alignment: Alignment.topLeft,
       child: TabBar(
-          isScrollable: false,
+          isScrollable: true,
           indicatorWeight: 2,
           indicatorPadding: EdgeInsets.zero,
           tabs: [
             Container(
-              width: 100,
+              // width: 100,
               padding: EdgeInsets.all(4),
               child: Row(
                 // mainAxisSize: MainAxisSize.min,
@@ -36,7 +37,7 @@ class Tabs extends StatelessWidget {
               ),
             ),
             Container(
-              width: 200,
+              // width: 200,
               padding: EdgeInsets.all(4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -44,11 +45,12 @@ class Tabs extends StatelessWidget {
                 children: [
                   Icon(
                     MyIcon.chat2,
+                    size: 20,
                   ),
                   SizedBox(
                     width: 10,
                   ),
-                  Text("Conversasions")
+                  Text("Questions")
                 ],
               ),
             )

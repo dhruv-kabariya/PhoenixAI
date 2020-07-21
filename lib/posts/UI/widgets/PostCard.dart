@@ -1,16 +1,20 @@
 import 'package:ai/Universals/customchips.dart';
 import 'package:ai/detail/UI/screen/detailscreen.dart';
 import 'package:ai/icons/my_icon_icons.dart';
+import 'package:ai/models/otheruser.dart';
+import 'package:ai/models/post.dart';
 import 'package:ai/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
   const PostCard({
+    @required this.post,
     Key key,
     @required this.boxHeight,
   }) : super(key: key);
 
   final double boxHeight;
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,9 @@ class PostCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => DetailScreen(),
+            builder: (context) => DetailScreen(
+              post: post,
+            ),
           ),
         );
       },
@@ -50,7 +56,9 @@ class PostCard extends StatelessWidget {
                                 builder: (context) => ProfilePage()),
                           );
                         },
-                        child: ProfileData()),
+                        child: ProfileData(
+                          user: post.creators_id,
+                        )),
                     Container(
                       child: Icon(
                         Icons.bookmark_border,
@@ -61,11 +69,20 @@ class PostCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Title(),
-              About(),
-              Tags(),
+              Title(
+                title: post.title,
+              ),
+              About(
+                about: post.about,
+              ),
+              Tags(
+                tags: post.tags,
+              ),
               Images(boxHeight: boxHeight),
-              BottomBar()
+              BottomBar(
+                questions: post.no_of_question,
+                terythis: post.no_of_try,
+              )
             ],
           ),
         ),
@@ -76,8 +93,13 @@ class PostCard extends StatelessWidget {
 
 class BottomBar extends StatelessWidget {
   const BottomBar({
+    @required this.questions,
+    @required this.terythis,
     Key key,
   }) : super(key: key);
+
+  final int terythis;
+  final int questions;
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +123,7 @@ class BottomBar extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  "500",
+                  terythis.toString(),
                   style: TextStyle(color: Colors.white60),
                 )
               ],
@@ -122,7 +144,7 @@ class BottomBar extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  "200",
+                  questions.toString(),
                   style: TextStyle(color: Colors.white60),
                 )
               ],
@@ -165,80 +187,38 @@ class Images extends StatelessWidget {
 
 class Tags extends StatelessWidget {
   const Tags({
+    @required this.tags,
     Key key,
   }) : super(key: key);
+
+  final List<String> tags;
+
+  List<Widget> _chips(List<String> tags) {
+    return tags.map((e) {
+      return CustomChip(
+        text: e,
+        backColor: Colors.deepPurple[100],
+        textColors: Colors.deepPurple[800],
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 10),
         // height: boxHeight * 6,
-        child: Wrap(
-          children: [
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-            CustomChip(
-              text: "Artificial Nural Net",
-              backColor: Colors.deepPurple[100],
-              textColors: Colors.deepPurple[800],
-            ),
-          ],
-        ));
+        child: Wrap(children: _chips(tags)));
   }
 }
 
 class About extends StatelessWidget {
   const About({
+    @required this.about,
     Key key,
   }) : super(key: key);
+
+  final String about;
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +226,7 @@ class About extends StatelessWidget {
       // height: boxHeight * 5,
       margin: EdgeInsets.only(top: 3, left: 10, right: 10),
       child: Text(
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+        about,
         textAlign: TextAlign.left,
         style: TextStyle(fontSize: 14, color: Colors.white70),
       ),
@@ -256,8 +236,10 @@ class About extends StatelessWidget {
 
 class Title extends StatelessWidget {
   const Title({
+    @required this.title,
     Key key,
   }) : super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +247,7 @@ class Title extends StatelessWidget {
       // height: boxHeight * 5,
       margin: EdgeInsets.only(top: 6, left: 10, right: 10),
       child: Text(
-        "GAN with Parametar Setting",
+        title,
         textAlign: TextAlign.left,
         style: TextStyle(fontSize: 20, color: Colors.white),
       ),
@@ -275,8 +257,11 @@ class Title extends StatelessWidget {
 
 class ProfileData extends StatelessWidget {
   const ProfileData({
+    @required this.user,
     Key key,
   }) : super(key: key);
+
+  final OtherUser user;
 
   @override
   Widget build(BuildContext context) {
@@ -294,7 +279,7 @@ class ProfileData extends StatelessWidget {
             ),
           ),
           Text(
-            "Rashmika Mandana",
+            user.first_name + " " + user.last_name,
             style: TextStyle(fontSize: 14, color: Colors.white),
           )
         ],
