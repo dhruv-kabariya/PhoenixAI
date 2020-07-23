@@ -28,14 +28,6 @@ class FailPostLoading extends PostState {
 
 class MorePostLoading extends PostState {}
 
-class MorePostLoaded extends PostState {
-  final List<Post> list;
-  const MorePostLoaded({@required this.list});
-  @override
-  // TODO: implement props
-  List<Object> get props => [list];
-}
-
 class FailMorePostLoading extends PostState {
   final String error;
   const FailMorePostLoading({@required this.error});

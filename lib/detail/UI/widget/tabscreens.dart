@@ -1,6 +1,7 @@
 import 'package:ai/detail/UI/question/questionScreen.dart';
 import 'package:ai/detail/UI/detailscreen/detailtabscreen.dart';
 import 'package:ai/models/post.dart';
+import 'package:ai/try/UI/tryscreen.dart';
 import 'package:flutter/material.dart';
 
 class TabScreens extends StatelessWidget {
@@ -22,6 +23,7 @@ class TabScreens extends StatelessWidget {
             post: post,
           ),
           QuestionScreen(),
+          TryScreen(),
         ],
       ),
     );

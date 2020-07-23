@@ -15,46 +15,48 @@ class Tabs extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: TabBar(
           isScrollable: true,
-          indicatorWeight: 2,
+          indicatorWeight: 3,
           indicatorPadding: EdgeInsets.zero,
           tabs: [
-            Container(
-              // width: 100,
-              padding: EdgeInsets.all(4),
-              child: Row(
-                // mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.import_contacts,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("About")
-                ],
-              ),
+            CustomTabIcon(
+              name: "About",
+              icon: Icons.import_contacts,
             ),
-            Container(
-              // width: 200,
-              padding: EdgeInsets.all(4),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(
-                    MyIcon.chat2,
-                    size: 20,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("Questions")
-                ],
-              ),
-            )
+            CustomTabIcon(name: "Question", icon: MyIcon.chat2),
+            CustomTabIcon(name: "Try", icon: Icons.code)
           ]),
+    );
+  }
+}
+
+class CustomTabIcon extends StatelessWidget {
+  final String name;
+  final IconData icon;
+  const CustomTabIcon({
+    @required this.name,
+    @required this.icon,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // width: 100,
+      padding: EdgeInsets.all(4),
+      child: Row(
+        // mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(name),
+        ],
+      ),
     );
   }
 }

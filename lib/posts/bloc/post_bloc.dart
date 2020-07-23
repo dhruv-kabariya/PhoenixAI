@@ -44,7 +44,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     yield MorePostLoading();
     try {
       List<Post> list = await postServices.fetchMorePost();
-      yield MorePostLoaded(list: list);
+      yield PostLoaded(postList: list);
     } catch (e) {
       yield FailMorePostLoading(error: e);
     }

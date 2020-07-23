@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
                   title: post.title,
                 ),
                 DefaultTabController(
-                    length: 2,
+                    length: 3,
                     child: Column(
                       children: [
                         Tabs(),

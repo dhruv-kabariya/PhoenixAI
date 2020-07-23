@@ -29,8 +29,10 @@ class QuestionList extends StatelessWidget {
     return list.map((question) {
       return InkWell(
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => AnswerScreen()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => AnswerScreen(
+                    question: question,
+                  )));
         },
         child: Container(
           decoration: BoxDecoration(
