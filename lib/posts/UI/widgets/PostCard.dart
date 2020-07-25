@@ -1,3 +1,4 @@
+import 'package:ai/Universals/chipsShow.dart';
 import 'package:ai/Universals/customchips.dart';
 import 'package:ai/detail/UI/screen/detailscreen.dart';
 import 'package:ai/icons/my_icon_icons.dart';
@@ -105,7 +106,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 5, left: 10),
+      margin: EdgeInsets.only(top: 5),
       // height: boxHeight * 5,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -185,32 +186,32 @@ class Images extends StatelessWidget {
   }
 }
 
-class Tags extends StatelessWidget {
-  const Tags({
-    @required this.tags,
-    Key key,
-  }) : super(key: key);
+// class Tags extends StatelessWidget {
+//   const Tags({
+//     @required this.tags,
+//     Key key,
+//   }) : super(key: key);
 
-  final List<String> tags;
+//   final List<String> tags;
 
-  List<Widget> _chips(List<String> tags) {
-    return tags.map((e) {
-      return CustomChip(
-        text: e,
-        backColor: Colors.deepPurple[100],
-        textColors: Colors.deepPurple[800],
-      );
-    }).toList();
-  }
+//   List<Widget> _chips(List<String> tags) {
+//     return tags.map((e) {
+//       return CustomChip(
+//         text: e,
+//         backColor: Colors.deepPurple[100],
+//         textColors: Colors.deepPurple[800],
+//       );
+//     }).toList();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 10),
-        // height: boxHeight * 6,
-        child: Wrap(children: _chips(tags)));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         margin: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 10),
+//         // height: boxHeight * 6,
+//         child: Wrap(children: _chips(tags)));
+//   }
+// }
 
 class About extends StatelessWidget {
   const About({
@@ -224,7 +225,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // height: boxHeight * 5,
-      margin: EdgeInsets.only(top: 3, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 3),
       child: Text(
         about,
         textAlign: TextAlign.left,
@@ -245,7 +246,7 @@ class Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // height: boxHeight * 5,
-      margin: EdgeInsets.only(top: 6, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 6),
       child: Text(
         title,
         textAlign: TextAlign.left,

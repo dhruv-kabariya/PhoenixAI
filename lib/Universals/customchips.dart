@@ -13,11 +13,11 @@ class CustomChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 3),
+      margin: EdgeInsets.only(left: 3, right: 3, bottom: 2),
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
           color: backColor,
-          border: Border.all(),
+          // border: Border.all(),
           borderRadius: BorderRadius.circular(20)),
       child: Text(
         text,
