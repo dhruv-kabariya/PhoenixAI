@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
-      bloc: LoginBloc(
+      cubit: LoginBloc(
           authbloc: widget.authBloc, userServices: widget.userServices),
       builder: (context, state) {
         return Container(

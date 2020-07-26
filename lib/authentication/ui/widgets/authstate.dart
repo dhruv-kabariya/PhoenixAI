@@ -39,7 +39,7 @@ class CardOptions extends StatelessWidget {
                 margin:
                     EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
                 child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  bloc: BlocProvider.of<AuthenticationBloc>(context),
+                  cubit: BlocProvider.of<AuthenticationBloc>(context),
                   builder: (context, state) {
                     if (state is AuthenticationLogin) {
                       return LoginForm(

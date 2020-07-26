@@ -24,7 +24,9 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
     no_of_try: json['no_of_try'] as int,
     tags: (json['tags'] as List).map((e) => e as String).toList(),
   )
-    ..post_list = json['post_list'] as List
+    ..post_list = (json['post_list'] as List)
+        .map((e) => Post.fromJson(e as Map<String, dynamic>))
+        .toList()
     ..questions_list = (json['questions_list'] as List)
         .map((e) => Question.fromJson(e as Map<String, dynamic>))
         .toList()

@@ -18,3 +18,5 @@ TextStyle kStyleBody = TextStyle(
   fontFamily: kFontBody,
   fontSize: 17,
 );
+
+const UserTable = "User";

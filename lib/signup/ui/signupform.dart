@@ -31,7 +31,7 @@ class _SignUpFormState extends State<SignUpForm> {
     SignupblocBloc bloc = SignupblocBloc(
         authbloc: widget.authbloc, userServices: widget.userServices);
     return BlocBuilder(
-        bloc: bloc,
+        cubit: bloc,
         builder: (context, state) {
           if (state is SingupLinkCardState) {
             return _linkForm(context, bloc, state);

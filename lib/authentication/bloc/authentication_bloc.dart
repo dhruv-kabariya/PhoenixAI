@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:ai/models/user.dart';
+import 'package:ai/profile/constants.dart';
 import 'package:ai/services/userServices.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -15,6 +17,7 @@ class AuthenticationBloc
       : super(AuthenticationInitial());
 
   final UserServices userServices;
+  final darkTheme = Hive.box(UserTable);
 
   AuthenticationState get initialState => AuthenticationInitial();
 

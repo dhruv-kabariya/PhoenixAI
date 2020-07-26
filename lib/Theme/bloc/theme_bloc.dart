@@ -1,27 +1,30 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';
 
-class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  ThemeBloc() : super(ThemeInitial());
+class ThemeCubit extends Cubit<ThemeData> {
+  /// {@macro brightness_cubit}
+  ThemeCubit() : super(_lightTheme);
 
-  @override
-  Stream<ThemeState> mapEventToState(
-    ThemeEvent event,
-  ) async* {
-    if (event is ThemeChanged) {
-      _mapToThemeChange(event.isDark);
-    } else if (event is ThemeInitialEvent) {
-      yield ThemeInitial();
-    }
-  }
+  static final _lightTheme = ThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      foregroundColor: Colors.white,
+    ),
+    brightness: Brightness.light,
+  );
 
-  _mapToThemeChange(bool isDark) async* {
-    //TODO: change the value of hive box
-    yield ThemeChangeState(isDark: isDark);
+  static final _darkTheme = ThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      foregroundColor: Colors.black,
+    ),
+    brightness: Brightness.dark,
+  );
+
+  /// Toggles the current brightness between light and dark.
+  void toggleTheme() {
+    emit(state.brightness == Brightness.dark ? _lightTheme : _darkTheme);
   }
 }
