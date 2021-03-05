@@ -91,20 +91,23 @@ class TryDetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ContributorsContainer(tryElement: tryElement),
+                  Divider(),
                   Tags(tags: tryElement.tags),
+                  Divider(),
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      margin: EdgeInsets.only(top: 8, left: 5),
+                      margin: EdgeInsets.only(top: 8),
                       height: 30,
                       width: 30,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage("assets/github-light.png"),
+                              image: AssetImage("assets/github-dark.png"),
                               fit: BoxFit.cover)),
                     ),
                   ),
+                  Divider(),
                   Container(
                     margin: EdgeInsets.only(
                       top: 5,

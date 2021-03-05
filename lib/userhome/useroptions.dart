@@ -38,7 +38,7 @@ class UserOptions extends StatelessWidget {
               ),
               Text(
                 element,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black87),
               )
             ],
           ),
@@ -52,93 +52,96 @@ class UserOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      color: Color(0x80121212),
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 10),
-              child: Column(
-                children: [
-                  Row(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          right: BorderSide(color: Colors.grey, width: 0.7),
+        ),
+        color: Colors.grey[100],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 20, left: 10),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      // margin: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Your Posts",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: Color(0xfffc3147),
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          margin:
+                              EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+                          child: Text(
+                            "New Post",
+                            style: Theme.of(context).textTheme.button,
+                          )),
+                    )
+                  ],
+                ),
+                Container(
+                  // height: (MediaQuery.of(context).size.height / 100) * 30,
+                  margin: EdgeInsets.only(left: 10, top: 5, bottom: 20),
+                  child: Column(
+                    children: createdlist(),
+                  ),
+                ),
+                Divider(),
+                Container(
+                  margin: EdgeInsets.only(top: 10, right: 10),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         // margin: EdgeInsets.only(left: 10),
                         child: Text(
-                          "Your Posts",
-                          style: TextStyle(fontSize: 20, color: Colors.white70),
+                          "Your Questions",
+                          style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                            color: Colors.red, shape: BoxShape.circle),
                         child: Icon(
-                          Icons.add,
-                          color: Colors.white70,
-                          size: 30,
+                          Icons.error_outline,
+                          color: Colors.white,
+                          size: 20,
                         ),
                       )
                     ],
                   ),
-                  Container(
-                    // height: (MediaQuery.of(context).size.height / 100) * 30,
-                    margin: EdgeInsets.only(left: 10, top: 5, bottom: 20),
-                    child: Column(
-                      children: createdlist(),
-                    ),
+                ),
+                Container(
+                  height: (MediaQuery.of(context).size.height / 100) * 30,
+                  margin: EdgeInsets.only(left: 10, top: 5),
+                  child: Column(
+                    children: createdlist(),
                   ),
-                  Divider(
-                    endIndent: 10,
-                    indent: 10,
-                    thickness: 2,
-                    height: 10,
-                    color: Colors.grey[600],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // margin: EdgeInsets.only(left: 10),
-                          child: Text(
-                            "Your Questions",
-                            style:
-                                TextStyle(fontSize: 20, color: Colors.white70),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                              color: Colors.red, shape: BoxShape.circle),
-                          child: Icon(
-                            Icons.error_outline,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: (MediaQuery.of(context).size.height / 100) * 30,
-                    margin: EdgeInsets.only(left: 10, top: 5),
-                    child: Column(
-                      children: createdlist(),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container()
-          ],
-        ),
+          ),
+          Container()
+        ],
       ),
     );
   }

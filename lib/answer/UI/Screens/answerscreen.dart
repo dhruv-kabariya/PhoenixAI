@@ -1,7 +1,7 @@
 import 'package:ai/AppBar/UI/webappbar.dart';
+import 'package:ai/Universals/chipsShow.dart';
 import 'package:ai/answer/bloc/answer_bloc.dart';
 import 'package:ai/models/question.dart';
-import 'package:ai/profile/constants.dart';
 import 'package:ai/services/AnswerService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +42,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
     double boxWidth = MediaQuery.of(context).size.width / 100;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: WebAppBar(size: Size(MediaQuery.of(context).size.width, 60)),
       body: CustomScrollView(
         controller: scrollController,
@@ -71,7 +71,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             widget.question.question,
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: Theme.of(context).textTheme.headline1,
                           ),
                         ),
                         Container(
@@ -80,8 +80,11 @@ class _AnswerScreenState extends State<AnswerScreen> {
                                 .difference(widget.question.time)
                                 .inDays
                                 .toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 10),
+                            style: Theme.of(context).textTheme.subtitle2,
                           ),
+                        ),
+                        Container(
+                          child: Tags(tags: widget.question.tags),
                         )
                       ],
                     ),
@@ -108,7 +111,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
             ),
           ),
           BlocListener<AnswerBloc, AnswerState>(
-            bloc: bloc,
+            cubit: bloc,
             listener: (context, state) {
               if (state is FailAnswerLoading) {
                 Scaffold.of(context)
@@ -116,7 +119,7 @@ class _AnswerScreenState extends State<AnswerScreen> {
               }
             },
             child: BlocBuilder<AnswerBloc, AnswerState>(
-              bloc: bloc,
+              cubit: bloc,
               builder: (context, state) {
                 if (state is AnswerLoading || state is AnswerInitial) {
                   return SliverFillRemaining(

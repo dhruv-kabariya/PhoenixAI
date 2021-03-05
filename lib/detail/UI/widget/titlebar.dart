@@ -11,7 +11,7 @@ class TitleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[900],
+      color: Colors.grey[350],
       padding: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,7 +21,7 @@ class TitleBar extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: Text(
               title,
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: Theme.of(context).textTheme.headline1,
             ),
           ),
           Container(
@@ -30,34 +30,77 @@ class TitleBar extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.grey),
+                    color: Color(0xfffc3147),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.code,
-                          size: 25,
-                          color: Colors.red,
-                        ),
+                      Icon(
+                        Icons.add,
+                        color: Colors.white,
                       ),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "30",
-                          style: TextStyle(color: Colors.black54, fontSize: 15),
-                        ),
+                      Text(
+                        "New Question",
+                        style: TextStyle(fontSize: 14, color: Colors.white),
                       )
                     ],
                   ),
                 ),
               ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class TitleBarButton extends StatelessWidget {
+  final Color iconColor;
+  final String button;
+  final IconData icon;
+
+  const TitleBarButton({
+    @required this.button,
+    @required this.icon,
+    @required this.iconColor,
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double boxHeight = MediaQuery.of(context).size.height / 100;
+    double boxWidth = MediaQuery.of(context).size.width / 100;
+
+    return Container(
+      height: boxHeight * 3,
+      width: boxWidth * 10,
+      decoration: BoxDecoration(
+        color: Colors.grey[400],
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: Colors.grey),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.all(5),
+            alignment: Alignment.center,
+            child: Icon(
+              icon,
+              size: 15,
+              color: iconColor,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(5),
+            alignment: Alignment.center,
+            child: Text(
+              button,
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500),
             ),
           )
         ],

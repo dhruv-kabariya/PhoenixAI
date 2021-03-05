@@ -1,5 +1,4 @@
 import 'package:ai/Universals/chipsShow.dart';
-import 'package:ai/posts/UI/widgets/PostCard.dart';
 import 'package:ai/services/tryServices.dart';
 import 'package:ai/try/UI/widgets/header.dart';
 import 'package:ai/try/bloc/trycode_bloc.dart';
@@ -17,7 +16,7 @@ class TryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<TrycodeBloc, TrycodeState>(
-      bloc: bloc,
+      cubit: bloc,
       listener: (context, state) {
         if (state is FailListLoading) {
           Scaffold.of(context)
@@ -25,7 +24,7 @@ class TryScreen extends StatelessWidget {
         }
       },
       child: BlocBuilder<TrycodeBloc, TrycodeState>(
-        bloc: bloc,
+        cubit: bloc,
         builder: (context, state) {
           if (state is TrycodeInitial || state is TryListLoading) {
             return Container(

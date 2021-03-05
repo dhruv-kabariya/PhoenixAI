@@ -8,13 +8,13 @@ class Contributors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20, left: 10, bottom: 10),
+      padding: EdgeInsets.only(top: 20, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Contributors",
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: Theme.of(context).textTheme.headline2,
           ),
           Container(
             height: 50,

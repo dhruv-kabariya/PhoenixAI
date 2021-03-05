@@ -24,7 +24,7 @@ class RefLinks extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.all(6.0),
                       child: Image.asset(
-                        "github-light.png",
+                        "github-dark.png",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -32,7 +32,7 @@ class RefLinks extends StatelessWidget {
                   Container(
                     child: Text(
                       "http://github.com",
-                      style: TextStyle(color: Colors.white70),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   )
                 ],

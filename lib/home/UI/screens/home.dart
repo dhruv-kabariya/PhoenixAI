@@ -13,9 +13,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: WebAppBar(
-        size: Size(MediaQuery.of(context).size.width, 60),
+        size: Size(MediaQuery.of(context).size.width, 50),
       ),
       body: HomeBody(),
     );

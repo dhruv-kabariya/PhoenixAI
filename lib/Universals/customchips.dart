@@ -21,7 +21,8 @@ class CustomChip extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)),
       child: Text(
         text,
-        style: TextStyle(fontSize: 10, color: textColors),
+        style: TextStyle(
+            fontSize: 10, color: textColors, fontWeight: FontWeight.w500),
       ),
     );
   }

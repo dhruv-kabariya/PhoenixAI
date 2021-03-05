@@ -1,5 +1,4 @@
 import 'package:ai/Universals/chipsShow.dart';
-import 'package:ai/Universals/customchips.dart';
 import 'package:ai/detail/UI/screen/detailscreen.dart';
 import 'package:ai/icons/my_icon_icons.dart';
 import 'package:ai/models/otheruser.dart';
@@ -19,25 +18,22 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => DetailScreen(
-              post: post,
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+      // elevation: 10,
+      // color: Color(0xff262833),
+      child: InkWell(
+        hoverColor: Colors.grey[50],
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailScreen(
+                post: post,
+              ),
             ),
-          ),
-        );
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        margin: EdgeInsets.only(
-            // top:20,
-            bottom: 20,
-            left: 20,
-            right: 20),
-        elevation: 10,
-        color: Color(0xff262833),
+          );
+        },
         child: Container(
           padding: EdgeInsets.all(10),
           // height: boxHeight * 50,
@@ -62,7 +58,7 @@ class PostCard extends StatelessWidget {
                         )),
                     Container(
                       child: Icon(
-                        Icons.bookmark_border,
+                        Icons.more_horiz,
                         size: 30,
                         color: Colors.green,
                       ),
@@ -106,50 +102,61 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 5),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       // height: boxHeight * 5,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            child: Row(
-              children: [
-                Icon(
-                  Icons.code,
-                  size: 22,
-                  color: Color(0xFFB00020),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.code,
+                      size: 22,
+                      color: Color(0xFFB00020),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      terythis.toString(),
+                      style: TextStyle(color: Colors.black54),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  width: 5,
+              ),
+              SizedBox(
+                width: 12,
+              ),
+              Container(
+                child: Row(
+                  children: [
+                    Icon(
+                      MyIcon.chat2,
+                      size: 22,
+                      color: Color(0xff097fea),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      questions.toString(),
+                      style: TextStyle(color: Colors.black54),
+                    )
+                  ],
                 ),
-                Text(
-                  terythis.toString(),
-                  style: TextStyle(color: Colors.white60),
-                )
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
-            width: 12,
-          ),
-          Container(
-            child: Row(
-              children: [
-                Icon(
-                  MyIcon.chat2,
-                  size: 22,
-                  color: Color(0xff097fea),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  questions.toString(),
-                  style: TextStyle(color: Colors.white60),
-                )
-              ],
-            ),
+          Icon(
+            Icons.bookmark_border,
+            size: 22,
+            color: Colors.green,
           ),
         ],
       ),
@@ -229,7 +236,7 @@ class About extends StatelessWidget {
       child: Text(
         about,
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 14, color: Colors.white70),
+        style: Theme.of(context).textTheme.subtitle2,
       ),
     );
   }
@@ -250,7 +257,7 @@ class Title extends StatelessWidget {
       child: Text(
         title,
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 20, color: Colors.white),
+        style: Theme.of(context).textTheme.headline1,
       ),
     );
   }
@@ -281,7 +288,7 @@ class ProfileData extends StatelessWidget {
           ),
           Text(
             user.first_name + " " + user.last_name,
-            style: TextStyle(fontSize: 14, color: Colors.white),
+            style: Theme.of(context).textTheme.bodyText1,
           )
         ],
       ),

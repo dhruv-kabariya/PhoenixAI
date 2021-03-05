@@ -23,12 +23,7 @@ class _WebAppBarState extends State<WebAppBar> {
 
     double boxwidth = MediaQuery.of(context).size.width / 100;
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[850],
-        // borderRadius: BorderRadius.vertical(
-        //   bottom: Radius.circular(30),
-        // ),
-      ),
+      decoration: BoxDecoration(color: Theme.of(context).appBarTheme.color),
       child: Container(
         height: widget.size.height,
         width: MediaQuery.of(context).size.width,
@@ -36,10 +31,14 @@ class _WebAppBarState extends State<WebAppBar> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Logo(boxwidth: boxwidth),
-            SearchBox(
-              boxwidth: boxwidth,
-              controller: _controller,
+            Row(
+              children: [
+                Logo(boxwidth: boxwidth),
+                SearchBox(
+                  boxwidth: boxwidth,
+                  controller: _controller,
+                ),
+              ],
             ),
             IconRow()
           ],

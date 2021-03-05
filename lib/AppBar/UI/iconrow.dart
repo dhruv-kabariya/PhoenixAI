@@ -76,7 +76,13 @@ class _IconRowState extends State<IconRow> {
       child: Row(
         children: [
           Container(
-            height: 40,
+            decoration: BoxDecoration(
+              color: Theme.of(context).secondaryHeaderColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(50),
+              ),
+            ),
+            height: 35,
             child: InkWell(
               onTap: () {
                 Navigator.of(context).push(
@@ -99,6 +105,8 @@ class _IconRowState extends State<IconRow> {
                     ),
                   ),
                   Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(right: 8),
                     child: Text(
                       "Rashmika",
                       style: TextStyle(
@@ -110,11 +118,6 @@ class _IconRowState extends State<IconRow> {
                 ],
               ),
             ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(50),
-              ),
-            ),
           ),
           InkWell(
             onTap: () {
@@ -122,10 +125,10 @@ class _IconRowState extends State<IconRow> {
               Overlay.of(context).insert(this._overlayEntry);
             },
             child: Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  color: Color(0xB3121212), shape: BoxShape.circle),
-              padding: EdgeInsets.all(5),
+              height: 35,
+              width: 35,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(shape: BoxShape.circle),
               child: Icon(
                 Icons.arrow_drop_down,
                 color: Colors.white70,
@@ -134,11 +137,12 @@ class _IconRowState extends State<IconRow> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(12),
-            margin: EdgeInsets.only(top: 8, bottom: 8, right: 20),
+            alignment: Alignment.center,
+            // padding: EdgeInsets.all(12),
+            margin: EdgeInsets.only(right: 30),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Color(0xB3121212),
+              // color: Theme.of(context).secondaryHeaderColor,
             ),
             child: Icon(
               Icons.notifications,

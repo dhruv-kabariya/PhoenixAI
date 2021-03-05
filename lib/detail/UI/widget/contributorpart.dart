@@ -1,3 +1,4 @@
+import 'package:ai/Universals/chipsShow.dart';
 import 'package:ai/Universals/customchips.dart';
 import 'package:ai/detail/UI/widget/contributor.dart';
 import 'package:ai/models/otheruser.dart';
@@ -15,44 +16,43 @@ class CotriButorPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _chips(List<String> tags) {
-      return tags.map((e) {
-        return CustomChip(
-          text: e,
-          backColor: Colors.deepPurple[100],
-          textColors: Colors.deepPurple[800],
-        );
-      }).toList();
-    }
-
     return Expanded(
       flex: 1,
       child: Container(
+        padding: EdgeInsets.only(left: 3),
+        decoration: BoxDecoration(
+            // color: Colors.grey[50],
+            ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Contributors(),
+            Divider(),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 10),
+              margin: EdgeInsets.only(top: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     child: Text(
                       "Tags",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
-                  Wrap(children: _chips(tags)),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Tags(tags: tags),
                 ],
               ),
             ),
+            Divider(),
             Container(
-              margin: EdgeInsets.only(left: 10, top: 5),
+              margin: EdgeInsets.only(top: 8),
               child: Text(
                 "Licence BSD-13",
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
           ],

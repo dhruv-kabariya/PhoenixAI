@@ -12,19 +12,19 @@ class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        right: boxwidth * 2,
-      ),
-      height: 40,
-      width: boxwidth * 50,
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.symmetric(horizontal: boxwidth),
+      height: 35,
+      width: boxwidth * 25,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          color: Color(0x80121212)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          color: Theme.of(context).secondaryHeaderColor),
       child: TextField(
+        textAlign: TextAlign.left,
         controller: controller,
         style: TextStyle(
           color: Colors.white70,
-          fontSize: 18,
+          fontSize: 14,
         ),
         onChanged: (value) {
           // print(controller.text);

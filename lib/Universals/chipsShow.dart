@@ -1,11 +1,15 @@
+import 'dart:math';
+
+import 'package:ai/Theme/theme.dart';
 import 'package:ai/Universals/customchips.dart';
 import 'package:flutter/material.dart';
 
 class Tags extends StatelessWidget {
-  const Tags({
+  Tags({
     @required this.tags,
     Key key,
   }) : super(key: key);
+  final Random ran = Random();
 
   final List<String> tags;
 
@@ -13,8 +17,8 @@ class Tags extends StatelessWidget {
     return tags.map((e) {
       return CustomChip(
         text: e,
-        backColor: Colors.deepPurple[100],
-        textColors: Colors.deepPurple[800],
+        backColor: WebTheme.chipsBackground[ran.nextInt(5)],
+        textColors: WebTheme.chipsText[ran.nextInt(5)],
       );
     }).toList();
   }

@@ -1,4 +1,5 @@
 import 'package:ai/Theme/bloc/theme_bloc.dart';
+import 'package:ai/Theme/theme.dart';
 import 'package:ai/authentication/bloc/authentication_bloc.dart';
 import 'package:ai/authentication/ui/screen/Authscreen.dart';
 import 'package:ai/blocObserver.dart';
@@ -35,14 +36,14 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           if (state is ThemeChangeState) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               // initialRoute: '/',
-              theme:
-                  state.isDark ?? false ? ThemeData.dark() : ThemeData.light(),
+              theme: state.isDark ?? false ? WebTheme.dark : WebTheme.bright,
               home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 builder: (context, state) {
                   if (state is AuthenticationInitial) {
                     return Container(
-                      color: Color(0xFF121212),
+                      child: CircularProgressIndicator(),
                     );
                   } else if (state is AuthenicationSuccess) {
                     return HomeScreen();
@@ -60,12 +61,12 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               // initialRoute: '/',
               //TODO : get the data from hive
-              theme: ThemeData.light(),
+              theme: WebTheme.bright,
               home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 builder: (context, state) {
                   if (state is AuthenticationInitial) {
                     return Container(
-                      color: Color(0xFF121212),
+                      color: Theme.of(context).primaryColor,
                     );
                   } else if (state is AuthenicationSuccess) {
                     return HomeScreen();

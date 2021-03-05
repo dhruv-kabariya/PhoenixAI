@@ -30,7 +30,7 @@ class PostList extends StatelessWidget {
         //   bloc: bloc,
         //   child:
         BlocBuilder<PostBloc, PostState>(
-      bloc: bloc,
+      cubit: bloc,
       builder: (context, state) {
         if (state is PostLoading || state is PostInitial) {
           return Container(

@@ -6,6 +6,7 @@ class TopPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.grey[100],
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,7 +19,7 @@ class TopPanel extends StatelessWidget {
               children: [
                 Text(
                   "Top Users",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Container(
                   height: 30,
@@ -41,7 +42,7 @@ class TopPanel extends StatelessWidget {
                       ),
                       Text(
                         "User Dummy",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       )
                     ],
                   ),
@@ -55,7 +56,7 @@ class TopPanel extends StatelessWidget {
               children: [
                 Text(
                   "Top Papers",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ],
             ),

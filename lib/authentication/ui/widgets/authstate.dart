@@ -15,58 +15,48 @@ class CardOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AuthenticationBloc authbloc = BlocProvider.of<AuthenticationBloc>(context);
-
-    return Expanded(
-      flex: 5,
-      child: Container(
-        color: Colors.white60,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 50),
-              child: Text(
-                "Welcome to AI Community",
-                style: Theme.of(context).textTheme.headline5,
-              ),
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 50),
+            child: Text(
+              "Welcome to AI Community",
+              style: Theme.of(context).textTheme.headline1,
             ),
-            Container(
-                height: height - 150,
-                width: width,
-                alignment: Alignment.topLeft,
-                margin:
-                    EdgeInsets.only(left: 50, top: 50, bottom: 20, right: 20),
-                child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  bloc: BlocProvider.of<AuthenticationBloc>(context),
-                  builder: (context, state) {
-                    if (state is AuthenticationLogin) {
-                      return LoginForm(
-                        authBloc: BlocProvider.of<AuthenticationBloc>(context),
-                        userServices:
-                            BlocProvider.of<AuthenticationBloc>(context)
-                                .userServices,
-                      );
-                    } else if (state is AuthenticationSignUp) {
-                      return SignUpForm(
-                        authbloc: BlocProvider.of<AuthenticationBloc>(context),
-                        userServices:
-                            BlocProvider.of<AuthenticationBloc>(context)
-                                .userServices,
-                      );
-                    }
+          ),
+          Container(
+              height: height - 150,
+              width: width,
+              margin: EdgeInsets.only(top: 50),
+              child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                cubit: BlocProvider.of<AuthenticationBloc>(context),
+                builder: (context, state) {
+                  if (state is AuthenticationLogin) {
                     return LoginForm(
                       authBloc: BlocProvider.of<AuthenticationBloc>(context),
                       userServices: BlocProvider.of<AuthenticationBloc>(context)
                           .userServices,
                     );
-                  },
-                )
-                // child: LoginForm(),
-                ),
-          ],
-        ),
+                  } else if (state is AuthenticationSignUp) {
+                    return SignUpForm(
+                      authbloc: BlocProvider.of<AuthenticationBloc>(context),
+                      userServices: BlocProvider.of<AuthenticationBloc>(context)
+                          .userServices,
+                    );
+                  }
+                  return LoginForm(
+                    authBloc: BlocProvider.of<AuthenticationBloc>(context),
+                    userServices: BlocProvider.of<AuthenticationBloc>(context)
+                        .userServices,
+                  );
+                },
+              )
+              // child: LoginForm(),
+              ),
+        ],
       ),
     );
   }

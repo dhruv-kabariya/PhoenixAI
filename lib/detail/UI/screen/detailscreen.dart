@@ -13,9 +13,9 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: WebAppBar(
-        size: Size(MediaQuery.of(context).size.width, 60),
+        size: Size(MediaQuery.of(context).size.width, 50),
       ),
       body: CustomScrollView(
         slivers: [

@@ -1,3 +1,4 @@
+import 'package:ai/Universals/chipsShow.dart';
 import 'package:ai/Universals/customchips.dart';
 import 'package:ai/Universals/tabscreenToolBar.dart';
 import 'package:ai/answer/UI/Screens/answerscreen.dart';
@@ -19,13 +20,6 @@ class QuestionScreen extends StatelessWidget {
 }
 
 class QuestionList extends StatelessWidget {
-  List<Widget> _chips(List<String> tags) {
-    return tags.map((e) {
-      return CustomChip(
-          text: e, backColor: Colors.purple[100], textColors: Colors.purple);
-    }).toList();
-  }
-
   List<Widget> createList(context, List<Question> list) {
     return list.map((question) {
       return InkWell(
@@ -50,19 +44,16 @@ class QuestionList extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: Text(
                   question.question,
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline5,
                 ),
               ),
-              Wrap(
-                children: _chips(question.tags),
-              ),
+              Tags(tags: question.tags),
               Container(
                 margin: EdgeInsets.only(left: 5, top: 3),
                 child: Text(
                   (DateTime.now().difference(question.time).inDays).toString() +
                       " day ago",
-                  style: TextStyle(color: Colors.white70, fontSize: 10),
+                  style: TextStyle(color: Colors.grey[400], fontSize: 10),
                 ),
               ),
               Container(
@@ -85,8 +76,8 @@ class QuestionList extends StatelessWidget {
                           ),
                           Text(
                             question.no_of_answer.toString(),
-                            style:
-                                TextStyle(color: Colors.white70, fontSize: 12),
+                            style: TextStyle(
+                                color: Colors.grey[400], fontSize: 10),
                           )
                         ],
                       ),
@@ -113,11 +104,11 @@ class QuestionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionBloc, QuestionState>(
-      bloc: bloc,
+      cubit: bloc,
       builder: (context, state) {
         if (state is QuestionLoading || state is QuestionInitial) {
           return Container(
-            child: CircularProgressIndicator(),
+            child: Center(child: CircularProgressIndicator()),
           );
         } else if (state is QuestionLoaded) {
           return Container(

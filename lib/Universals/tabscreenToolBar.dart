@@ -29,7 +29,9 @@ class ToolBar extends StatelessWidget {
                 Text(
                   "200",
                   style: TextStyle(
-                      letterSpacing: 0.2, color: Colors.white70, fontSize: 16),
+                      letterSpacing: 0.2,
+                      color: Colors.grey[400],
+                      fontSize: 16),
                 ),
                 SizedBox(
                   width: 8,

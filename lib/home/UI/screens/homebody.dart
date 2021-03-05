@@ -25,7 +25,6 @@ class _HomeBodyState extends State<HomeBody> {
           Expanded(
             flex: 8,
             child: Container(
-              padding: EdgeInsets.only(top: 20),
               child: PostList(),
             ),
           ),

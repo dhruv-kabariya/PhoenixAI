@@ -9,11 +9,12 @@ class Tabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[900],
+      color: Colors.grey[100],
       // constraints: BoxConstraints.expand(height: 50),
 
       alignment: Alignment.topLeft,
       child: TabBar(
+          indicatorColor: Theme.of(context).primaryColor,
           isScrollable: true,
           indicatorWeight: 3,
           indicatorPadding: EdgeInsets.zero,
@@ -21,9 +22,18 @@ class Tabs extends StatelessWidget {
             CustomTabIcon(
               name: "About",
               icon: Icons.import_contacts,
+              iconColor: Colors.blue,
             ),
-            CustomTabIcon(name: "Question", icon: MyIcon.chat2),
-            CustomTabIcon(name: "Try", icon: Icons.code)
+            CustomTabIcon(
+              name: "Question",
+              icon: MyIcon.chat2,
+              iconColor: Colors.black,
+            ),
+            CustomTabIcon(
+              name: "Try",
+              icon: Icons.code,
+              iconColor: Colors.red,
+            )
           ]),
     );
   }
@@ -32,9 +42,11 @@ class Tabs extends StatelessWidget {
 class CustomTabIcon extends StatelessWidget {
   final String name;
   final IconData icon;
+  final Color iconColor;
   const CustomTabIcon({
     @required this.name,
     @required this.icon,
+    @required this.iconColor,
     Key key,
   }) : super(key: key);
 
@@ -50,11 +62,15 @@ class CustomTabIcon extends StatelessWidget {
         children: [
           Icon(
             icon,
+            color: iconColor,
           ),
           SizedBox(
             width: 10,
           ),
-          Text(name),
+          Text(
+            name,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
         ],
       ),
     );
